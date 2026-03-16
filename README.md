@@ -101,6 +101,23 @@ Também existem **conquistas** e **tempo de resolução** de cada caso.
 
 ---
 
+# 💾 Progresso do Jogador
+
+O progresso do jogador por enquanto é salvo diretamente no navegador utilizando **localStorage**.
+
+Isso inclui:
+
+- casos já resolvidos
+- nível do jogador
+- conquistas
+- tempo de resolução dos casos
+
+Dessa forma o jogador pode fechar o site e continuar depois do ponto em que parou.
+
+> Obs: como os dados ficam armazenados no navegador; usar outro pc, limpar o cache ou os dados do navegador pode apagar o progresso.
+
+---
+
 # 🛠️ Tecnologias
 
 O projeto está sendo desenvolvido com:
