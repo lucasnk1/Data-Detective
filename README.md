@@ -76,6 +76,16 @@ Assim qualquer pessoa pode aprender SQL jogando.
 
 ---
 
+# 👥 Equipe
+
+Este projeto está sendo desenvolvido por:
+
+- **Lucas Leuck de Oliveira ( github.com/lucasnk1 )** – idealização do projeto / desenvolvimento
+- **Augusto Kulzer ( github.com/gutokulzer )** – desenvolvimento / criação de casos
+- **Eduardo Dias ( github.com/eduudiass )** – desenvolvimento / banco de dados
+
+---
+
 # 🏆 Sistema de Progressão
 
 O jogador ganha **XP** ao resolver casos.
