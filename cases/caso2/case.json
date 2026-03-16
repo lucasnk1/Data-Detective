@@ -1,0 +1,25 @@
+{
+  "case_id": 2,
+  "title": "Fraude Financeira",
+  "story": "A empresa Aurora Investments detectou movimentações financeiras suspeitas em seu sistema interno.\n\nNos últimos dias, várias transferências de alto valor foram feitas para contas externas sem justificativa.\nO setor de compliance acredita que um funcionário está desviando dinheiro para uma empresa fantasma.",
+  "objective": "Descobrir qual conta está recebendo as transferências suspeitas, qual empresa controla essa conta e qual funcionário está realizando as transferências.",
+  "initial_clues": [
+    "Transferências acima de 8000 foram marcadas como suspeitas."
+  ],
+  "database_tables": [
+    "employees",
+    "accounts",
+    "transactions"
+  ],
+  "poll": {
+    "question": "Quem é o funcionário responsável pela fraude financeira?",
+    "options": [
+      "Carlos Mendes",
+      "Ana Ribeiro",
+      "Bruno Costa",
+      "Juliana Prado"
+    ],
+    "correct_answer": "Carlos Mendes"
+  }
+}
+

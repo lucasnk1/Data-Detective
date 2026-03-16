@@ -1,0 +1,25 @@
+{
+  "case_id": 3,
+  "title": "Ataque Hacker",
+  "story": "A empresa Nexus Systems sofreu um ataque hacker.\n\nDados de clientes foram acessados durante a madrugada.\nOs logs mostram que o acesso foi feito usando credenciais internas.\nIsso sugere que um funcionário pode estar envolvido no ataque.",
+  "objective": "Descobrir quem fez login fora do horário normal, quem acessou arquivos sensíveis e qual funcionário realizou o ataque.",
+  "initial_clues": [
+    "O acesso ocorreu após 23:30 e veio de um IP externo."
+  ],
+  "database_tables": [
+    "employees",
+    "login_logs",
+    "server_access"
+  ],
+  "poll": {
+    "question": "Quem é o principal responsável pelo ataque hacker?",
+    "options": [
+      "Rafael Lima",
+      "Camila Torres",
+      "Diego Martins",
+      "Paula Alves"
+    ],
+    "correct_answer": "Diego Martins"
+  }
+}
+

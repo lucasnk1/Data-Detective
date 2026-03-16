@@ -1,0 +1,26 @@
+{
+  "case_id": 4,
+  "title": "Vazamento de Espionagem",
+  "story": "A empresa Helix Defense trabalha com tecnologia militar.\n\nUm documento classificado como TOP SECRET foi vazado.\nA suspeita é que um funcionário esteja passando informações para uma empresa rival.",
+  "objective": "Descobrir quem acessou documentos TOP SECRET, quem possui contatos com empresas externas e quem provavelmente vazou o documento.",
+  "initial_clues": [
+    "O documento vazado tinha classificação TOP SECRET."
+  ],
+  "database_tables": [
+    "employees",
+    "documents",
+    "document_access",
+    "external_contacts"
+  ],
+  "poll": {
+    "question": "Quem provavelmente vazou o documento TOP SECRET?",
+    "options": [
+      "Lucas Andrade",
+      "Marina Duarte",
+      "Felipe Rocha",
+      "Renata Campos"
+    ],
+    "correct_answer": "Renata Campos"
+  }
+}
+
