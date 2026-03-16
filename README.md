@@ -1,34 +1,141 @@
-# Data Detective
+# 🕵️ Data Detective
+> Resolva crimes. Analise dados. Domine SQL.
 
-Jogo educativo de investigação com SQL (inspirado em **SQL Murder Mystery**) para brasileiros aprendendo SQL.
+**Data Detective** é um jogo educativo onde o jogador resolve investigações utilizando **SQL**.
 
-## Rodando localmente
+A ideia do projeto é ensinar e praticar SQL de uma forma mais divertida: investigando casos, analisando bancos de dados e descobrindo quem é o culpado.
 
-### Backend (API + SQLite)
+O projeto foi inspirado no **SQL Murder Mystery**, mas com uma interface mais moderna e com diferentes tipos de investigações.
 
-Em um terminal:
+---
 
-```bash
-cd backend
-npm run dev
-```
+# 🎮 Como funciona
 
-API: `http://localhost:4000`
+O jogador assume o papel de um **Data Detective**, um analista que resolve investigações através da análise de dados.
 
-### Frontend (Next.js)
+Cada caso possui:
 
-Em outro terminal:
+- uma história
+- um banco de dados
+- pistas
+- vários suspeitos
 
-```bash
-cd frontend
-npm run dev
-```
+O jogador pode executar **queries SQL** para investigar os dados e descobrir quem é o culpado.
 
-Site: `http://localhost:3000`
+Como existem várias formas de chegar ao resultado usando SQL, o sistema não valida uma query específica.  
+No final da investigação o jogador escolhe o suspeito correto.
 
-## Regras importantes do projeto
+---
 
-- Interface **100% em PT-BR**.
-- SQL (comandos) ficam em inglês (`SELECT`, `WHERE`, `JOIN`...).
-- Projeto propositalmente simples (cara de projeto de estudante).
+# 🖥️ Interface
 
+O site terá uma interface inspirada em **computadores antigos**, como se o jogador estivesse usando um sistema operacional de investigação.
+
+Elementos da interface:
+
+- tela de inicialização (boot screen)
+- login estilo sistemas antigos
+- área de trabalho (desktop)
+- aplicativos de investigação
+- pasta com casos
+- editor SQL
+
+Também existe um guia chamado **Operador Vega**, que ajuda o jogador durante o jogo.
+
+---
+
+# 📁 Casos
+
+Atualmente o jogo possui os seguintes casos:
+
+### Caso 1 — Assassinato
+Investigação de um homicídio usando registros e depoimentos.
+
+### Caso 2 — Fraude Financeira
+Transferências suspeitas indicam possível desvio de dinheiro dentro de uma empresa.
+
+### Caso 3 — Ataque Hacker
+Logs de acesso indicam que alguém dentro da empresa ajudou em um ataque cibernético.
+
+### Caso 4 — Vazamento de Espionagem
+Um documento classificado como **Top Secret** foi vazado para uma empresa rival.
+
+---
+
+# 🧠 Tutorial SQL
+
+Para quem não sabe SQL, o jogo possui um **tutorial interativo** que ensina:
+
+- SELECT
+- WHERE
+- ORDER BY
+- GROUP BY
+- JOIN
+
+Assim qualquer pessoa pode aprender SQL jogando.
+
+---
+
+# 🏆 Sistema de Progressão
+
+O jogador ganha **XP** ao resolver casos.
+
+Cargos possíveis:
+
+- Data Detective Júnior
+- Data Detective
+- Investigador Sênior
+- Chefe de Investigação de Dados
+
+Também existem **conquistas** e **tempo de resolução** de cada caso.
+
+---
+
+# 🛠️ Tecnologias
+
+O projeto está sendo desenvolvido com:
+
+- React
+- Next.js
+- Node.js
+- SQLite
+- TailwindCSS
+- Monaco Editor
+
+---
+
+# 👥 Colaboração
+
+Este projeto está sendo desenvolvido em colaboração com colegas como forma de:
+
+- estudar programação
+- praticar SQL
+- aprender desenvolvimento web
+- construir projetos para portfólio
+
+Também estamos usando o projeto para ensinar SQL na prática.
+
+---
+
+# 🚧 Status do projeto
+
+Projeto em desenvolvimento.
+
+Ideias futuras:
+
+- mais casos investigativos
+- leaderboard
+- novos tipos de banco de dados
+- criação de casos pela comunidade
+
+---
+
+# 💡 Motivação
+
+Esse projeto começou como um experimento de **vibe coding** para aprender mais sobre:
+
+- SQL
+- desenvolvimento web
+- criação de projetos interativos
+
+A ideia é transformar aprendizado técnico em algo mais divertido e prático.
