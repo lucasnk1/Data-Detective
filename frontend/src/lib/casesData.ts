@@ -14,6 +14,35 @@ export const cases = [
     initialClue:
       "Um sedã prata com placa começando em 'DDT' foi visto deixando o local do crime.",
     tables: ["people", "crime_reports", "interviews", "vehicles"],
+    schema: {
+      people: [
+        { name: "id", type: "INTEGER", notnull: true, pk: true },
+        { name: "name", type: "TEXT", notnull: true },
+        { name: "age", type: "INTEGER", notnull: false },
+        { name: "city", type: "TEXT", notnull: false },
+        { name: "occupation", type: "TEXT", notnull: false }
+      ],
+      crime_reports: [
+        { name: "id", type: "INTEGER", notnull: true, pk: true },
+        { name: "date", type: "TEXT", notnull: true },
+        { name: "location", type: "TEXT", notnull: true },
+        { name: "victim_name", type: "TEXT", notnull: true },
+        { name: "summary", type: "TEXT", notnull: true }
+      ],
+      interviews: [
+        { name: "id", type: "INTEGER", notnull: true, pk: true },
+        { name: "person_id", type: "INTEGER", notnull: true },
+        { name: "date", type: "TEXT", notnull: true },
+        { name: "transcript", type: "TEXT", notnull: true }
+      ],
+      vehicles: [
+        { name: "id", type: "INTEGER", notnull: true, pk: true },
+        { name: "owner_id", type: "INTEGER", notnull: true },
+        { name: "plate", type: "TEXT", notnull: true },
+        { name: "model", type: "TEXT", notnull: true },
+        { name: "color", type: "TEXT", notnull: true }
+      ]
+    },
     poll: {
       question: "Quem é o principal suspeito pelo assassinato?",
       options: ["Marina Rocha", "Bruno Lima", "Sofia Martins", "Igor Batista"],
@@ -36,6 +65,25 @@ export const cases = [
       "Descobrir qual conta está recebendo as transferências suspeitas, qual empresa controla essa conta e qual funcionário está realizando as transferências.",
     initialClue: "Transferências acima de 8000 foram marcadas como suspeitas.",
     tables: ["employees", "accounts", "transactions"],
+    schema: {
+      employees: [
+        { name: "id", type: "INTEGER", notnull: true, pk: true },
+        { name: "name", type: "TEXT", notnull: true },
+        { name: "department", type: "TEXT", notnull: true }
+      ],
+      accounts: [
+        { name: "id", type: "INTEGER", notnull: true, pk: true },
+        { name: "name", type: "TEXT", notnull: true },
+        { name: "company", type: "TEXT", notnull: true }
+      ],
+      transactions: [
+        { name: "id", type: "INTEGER", notnull: true, pk: true },
+        { name: "employee_id", type: "INTEGER", notnull: true },
+        { name: "account_id", type: "INTEGER", notnull: true },
+        { name: "amount", type: "REAL", notnull: true },
+        { name: "date", type: "TEXT", notnull: true }
+      ]
+    },
     poll: {
       question: "Quem é o funcionário responsável pela fraude financeira?",
       options: ["Carlos Mendes", "Ana Ribeiro", "Bruno Costa", "Juliana Prado"],
@@ -57,6 +105,25 @@ export const cases = [
       "Descobrir quem fez login fora do horário normal, quem acessou arquivos sensíveis e qual funcionário realizou o ataque.",
     initialClue: "O acesso ocorreu após 23:30 e veio de um IP externo.",
     tables: ["employees", "login_logs", "server_access"],
+    schema: {
+      employees: [
+        { name: "id", type: "INTEGER", notnull: true, pk: true },
+        { name: "name", type: "TEXT", notnull: true },
+        { name: "department", type: "TEXT", notnull: true }
+      ],
+      login_logs: [
+        { name: "id", type: "INTEGER", notnull: true, pk: true },
+        { name: "employee_id", type: "INTEGER", notnull: true },
+        { name: "time", type: "TEXT", notnull: true },
+        { name: "ip", type: "TEXT", notnull: true }
+      ],
+      server_access: [
+        { name: "id", type: "INTEGER", notnull: true, pk: true },
+        { name: "employee_id", type: "INTEGER", notnull: true },
+        { name: "resource", type: "TEXT", notnull: true },
+        { name: "time", type: "TEXT", notnull: true }
+      ]
+    },
     poll: {
       question: "Quem é o principal responsável pelo ataque hacker?",
       options: ["Rafael Lima", "Camila Torres", "Diego Martins", "Paula Alves"],
@@ -78,6 +145,29 @@ export const cases = [
       "Descobrir quem acessou documentos TOP SECRET, quem possui contatos com empresas externas e quem provavelmente vazou o documento.",
     initialClue: "O documento vazado tinha classificação TOP SECRET.",
     tables: ["employees", "documents", "document_access", "external_contacts"],
+    schema: {
+      employees: [
+        { name: "id", type: "INTEGER", notnull: true, pk: true },
+        { name: "name", type: "TEXT", notnull: true },
+        { name: "department", type: "TEXT", notnull: true }
+      ],
+      documents: [
+        { name: "id", type: "INTEGER", notnull: true, pk: true },
+        { name: "title", type: "TEXT", notnull: true },
+        { name: "classification", type: "TEXT", notnull: true }
+      ],
+      document_access: [
+        { name: "id", type: "INTEGER", notnull: true, pk: true },
+        { name: "employee_id", type: "INTEGER", notnull: true },
+        { name: "document_id", type: "INTEGER", notnull: true },
+        { name: "date", type: "TEXT", notnull: true }
+      ],
+      external_contacts: [
+        { name: "id", type: "INTEGER", notnull: true, pk: true },
+        { name: "employee_id", type: "INTEGER", notnull: true },
+        { name: "company", type: "TEXT", notnull: true }
+      ]
+    },
     poll: {
       question: "Quem provavelmente vazou o documento TOP SECRET?",
       options: ["Lucas Andrade", "Marina Duarte", "Felipe Rocha", "Renata Campos"],

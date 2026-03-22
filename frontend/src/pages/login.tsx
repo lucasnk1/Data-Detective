@@ -81,7 +81,7 @@ export default function LoginPage() {
           </div>
 
           <div className="mt-4 text-[11px] opacity-70">
-            Dica: se o backend não estiver rodando, você vai ver erro de conexão.
+            Dica: Sua conta é salva localmente no navegador.
           </div>
         </div>
       </div>

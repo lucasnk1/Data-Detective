@@ -283,17 +283,7 @@ async function mockRequest<T>(path: string, opts: RequestInit & { token?: string
     }
 
     if (caseMatch[2] === "schema") {
-      const db = await getSqlDb();
-      const schema: Record<string, Array<{ name: string; type: string; notnull: boolean }>> = {};
-      for (const t of c.tables) {
-        const res = db.exec(`PRAGMA table_info(${t});`);
-        schema[t] = (res[0]?.values || []).map((r: any) => ({
-          name: r[1],
-          type: r[2],
-          notnull: !!r[3]
-        }));
-      }
-      return { ok: true, schema } as any;
+      return { ok: true, schema: c.schema } as any;
     }
 
     if (caseMatch[2] === "query") {
