@@ -47,17 +47,22 @@ export function CaseWindow({
   }, [open, token, caseId]);
 
   async function run() {
-    setMsg(null);
-    const r = await api.runQuery(token, caseId, sql);
-    if (!r.ok) {
-      setMsg(r.error);
-      return;
+    try {
+      setMsg(null);
+      const r = await api.runQuery(token, caseId, sql);
+      if (!r.ok) {
+        setMsg(r.error);
+        return;
+      }
+      setColumns(r.columns);
+      setRows(r.rows);
+      setXp(r.xp);
+      setQueryCount(r.progress?.queryCount ?? null);
+      // neste modo, resolução final vem pela enquete
+    } catch (e: any) {
+      const message = e?.message ? String(e.message) : "Erro inesperado ao executar SQL.";
+      setMsg(message);
     }
-    setColumns(r.columns);
-    setRows(r.rows);
-    setXp(r.xp);
-    setQueryCount(r.progress?.queryCount ?? null);
-    // neste modo, resolução final vem pela enquete
   }
 
   async function submitAnswer() {

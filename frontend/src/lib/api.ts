@@ -13,20 +13,25 @@ async function request<T>(
   path: string,
   opts: RequestInit & { token?: string } = {}
 ): Promise<ApiOk<T> | ApiErr> {
-  if (!API_BASE) {
-    return mockRequest(path, opts);
-  }
+  try {
+    if (!API_BASE) {
+      return await mockRequest(path, opts);
+    }
 
-  const headers: Record<string, string> = {
-    "Content-Type": "application/json",
-  };
-  if (opts.token) headers.Authorization = `Bearer ${opts.token}`;
-  const res = await fetch(`${API_BASE}${path}`, { ...opts, headers });
-  const json = await res.json().catch(() => null);
-  if (!json || typeof json.ok !== "boolean") {
-    return { ok: false, error: "Resposta inválida do servidor." };
+    const headers: Record<string, string> = {
+      "Content-Type": "application/json",
+    };
+    if (opts.token) headers.Authorization = `Bearer ${opts.token}`;
+    const res = await fetch(`${API_BASE}${path}`, { ...opts, headers });
+    const json = await res.json().catch(() => null);
+    if (!json || typeof json.ok !== "boolean") {
+      return { ok: false, error: "Resposta inválida do servidor." };
+    }
+    return json;
+  } catch (e: any) {
+    const message = e?.message ? String(e.message) : "Falha inesperada na comunicação com o servidor.";
+    return { ok: false, error: message };
   }
-  return json;
 }
 
 // ---- Mock backend (browser only) ----
@@ -102,7 +107,7 @@ let cachedDb: any = null;
 async function getSqlDb() {
   if (cachedDb) return cachedDb;
   const initSqlJs = (await import("sql.js")).default;
-  const SQL = await initSqlJs({ locateFile: () => "https://unpkg.com/sql.js@1.8.0/dist/sql-wasm.wasm" });
+  const SQL = await initSqlJs({ locateFile: () => "/sql-wasm.wasm" });
   const db = new SQL.Database();
 
   db.run(`
@@ -296,8 +301,8 @@ async function mockRequest<T>(path: string, opts: RequestInit & { token?: string
             "Query inválida. Neste jogo, por segurança, só aceitamos SELECT (ou WITH) sem ponto e vírgula."
         };
       }
-      const db = await getSqlDb();
       try {
+        const db = await getSqlDb();
         const res = db.exec(sql);
         const first = res[0] || { columns: [], values: [] };
         const columns: string[] = first.columns || [];

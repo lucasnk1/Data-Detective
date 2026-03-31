@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm run prepare-sql-wasm && next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "prepare-sql-wasm": "node scripts/copy-sql-wasm.mjs"
   },
   "dependencies": {
     "@monaco-editor/react": "^4.7.0",
