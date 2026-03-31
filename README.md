@@ -83,6 +83,7 @@ Este projeto está sendo desenvolvido por:
 - **Lucas Leuck de Oliveira ( github.com/lucasnk1 )** – idealização do projeto / desenvolvimento
 - **Augusto Kulzer ( github.com/gutokulzer )** – desenvolvimento / criação de casos
 - **Eduardo Dias ( github.com/eduudiass )** – desenvolvimento / banco de dados
+- **Pedro Sangalli ( github.com/pSangali )** – desenvolvimento / criação de casos
 
 ---
 
