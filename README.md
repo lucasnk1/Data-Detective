@@ -60,6 +60,15 @@ Logs de acesso indicam que alguém dentro da empresa ajudou em um ataque cibern�
 ### Caso 4 — Vazamento de Espionagem
 Um documento classificado como **Top Secret** foi vazado para uma empresa rival.
 
+### Caso 5 — Fuga no Estacionamento
+Uma fuga após tentativa de extorsão exige cruzar placas, proprietários e depoimentos.
+
+### Caso 6 — Pagamentos em Lote
+Auditoria encontra transferências repetidas e suspeitas para a mesma conta.
+
+### Caso 7 — Vazamento Coordenado
+Acessos noturnos e contatos externos sugerem ação interna para vazamento de informação.
+
 ---
 
 # 🧠 Tutorial SQL

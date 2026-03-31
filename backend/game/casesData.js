@@ -84,6 +84,72 @@ const cases = [
       correct: "Renata Campos"
     },
     rewardXp: 250
+  },
+  {
+    id: 5,
+    slug: "caso5-fuga-no-estacionamento",
+    title: "Caso 5 — Fuga no Estacionamento",
+    narrative: {
+      titulo: "Relatório de Ocorrência",
+      texto:
+        "Após uma tentativa de extorsão, o suspeito fugiu usando um veículo estacionado próximo ao local." +
+        "\n\nTestemunhas indicam que a placa começava com SPX e que o condutor já havia sido mencionado em depoimentos anteriores."
+    },
+    objective:
+      "Cruze as tabelas people, vehicles e interviews para identificar o condutor ligado ao veículo suspeito.",
+    initialClue:
+      "A placa parcial informada por uma testemunha foi SPX.",
+    tables: ["people", "vehicles", "interviews"],
+    poll: {
+      question: "Quem estava ligado ao veículo usado na fuga?",
+      options: ["Carlos Nogueira", "Sofia Martins", "Igor Batista", "Bruno Lima"],
+      correct: "Carlos Nogueira"
+    },
+    rewardXp: 260
+  },
+  {
+    id: 6,
+    slug: "caso6-pagamentos-em-lote",
+    title: "Caso 6 — Pagamentos em Lote",
+    narrative: {
+      titulo: "Auditoria Interna",
+      texto:
+        "O time de auditoria encontrou uma sequência de pagamentos fora do padrão para a mesma conta." +
+        "\n\nO comportamento sugere fracionamento de risco para ocultar desvio financeiro."
+    },
+    objective:
+      "Descubra qual funcionário concentra os maiores pagamentos suspeitos relacionando employees, transactions e accounts.",
+    initialClue:
+      "Os pagamentos suspeitos são transferências altas para a conta Orion Trade.",
+    tables: ["employees", "transactions", "accounts"],
+    poll: {
+      question: "Quem liderou os pagamentos suspeitos em lote?",
+      options: ["Ana Ribeiro", "Carlos Mendes", "Bruno Costa", "Juliana Prado"],
+      correct: "Carlos Mendes"
+    },
+    rewardXp: 280
+  },
+  {
+    id: 7,
+    slug: "caso7-vazamento-coordenado",
+    title: "Caso 7 — Vazamento Coordenado",
+    narrative: {
+      titulo: "Centro de Resposta a Incidentes",
+      texto:
+        "A empresa detectou acesso noturno a recursos críticos seguido de contato externo com uma organização concorrente." +
+        "\n\nA hipótese principal é um vazamento coordenado por alguém com acesso privilegiado."
+    },
+    objective:
+      "Use employees, login_logs, server_access, document_access, documents e external_contacts para apontar o principal responsável.",
+    initialClue:
+      "O acesso crítico ocorreu fora do horário comercial e envolveu documento classificado.",
+    tables: ["employees", "login_logs", "server_access", "document_access", "documents", "external_contacts"],
+    poll: {
+      question: "Quem é o principal responsável pelo vazamento coordenado?",
+      options: ["Carlos Mendes", "Ana Ribeiro", "Bruno Costa", "Juliana Prado"],
+      correct: "Juliana Prado"
+    },
+    rewardXp: 320
   }
 ];
 

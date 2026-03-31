@@ -181,13 +181,19 @@ async function getSqlDb() {
       (3, 4, 'project_docs', '10:20');
 
     INSERT INTO documents (id, title, classification) VALUES
-      (1, 'Drone Prototype', 'Secret');
+      (1, 'Drone Prototype', 'Secret'),
+      (2, 'Budget Plan', 'Internal'),
+      (3, 'Missile Guidance', 'Top Secret');
 
     INSERT INTO document_access (id, employee_id, document_id, date) VALUES
-      (1, 3, 1, '2024-06-01');
+      (1, 2, 1, '2024-04-01'),
+      (2, 4, 3, '2024-04-02'),
+      (3, 1, 2, '2024-04-02'),
+      (4, 4, 1, '2024-04-03');
 
     INSERT INTO external_contacts (id, employee_id, company) VALUES
-      (1, 3, 'Zephyr Solutions');
+      (1, 4, 'Nova Defense'),
+      (2, 2, 'University Lab');
   `);
 
   cachedDb = db;
