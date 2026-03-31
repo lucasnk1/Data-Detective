@@ -142,7 +142,7 @@ async function getSqlDb() {
 
     INSERT INTO interviews (id, person_id, date, transcript) VALUES
       (1, 1, '2026-03-10', 'Eu ouvi um carro acelerando e vi uma pessoa de jaqueta preta perto do beco.'),
-      (2, 2, '2026-03-10', 'Trabalho ali perto. Vi um sedã prata com placa começando com \'DDT\' saindo na contramão.'),
+      (2, 2, '2026-03-10', 'Trabalho ali perto. Vi um sedã prata com placa começando com ''DDT'' saindo na contramão.'),
       (3, 7, '2026-03-10', 'O Ricardo estava nervoso nos últimos dias. Falava que alguém tinha acesso às coisas dele.');
 
     INSERT INTO vehicles (id, owner_id, plate, model, color) VALUES
