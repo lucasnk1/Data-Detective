@@ -7,6 +7,8 @@ A ideia do projeto é ensinar e praticar SQL de uma forma mais divertida: invest
 
 O projeto foi inspirado no **SQL Murder Mystery**, mas com uma interface mais moderna e com diferentes tipos de investigações.
 
+![Print da Interface](https://github.com/user-attachments/assets/c3603c30-1725-40b3-b911-419ac3cccc00)
+
 ---
 
 # 🎮 Como funciona
