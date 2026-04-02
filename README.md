@@ -1,81 +1,90 @@
+<p align="center">
+  <a href="README.md">
+    <img src="https://img.shields.io/badge/Language-English-blue">
+  </a>
+  <a href="README-pt.md">
+    <img src="https://img.shields.io/badge/Idioma-Português-green">
+  </a>
+</p>
+
 # 🕵️ Data Detective
-> Resolva crimes. Analise dados. Domine SQL.
+> Solve crimes. Analyze data. Master SQL.
 
-**Data Detective** é um jogo educativo onde o jogador resolve investigações utilizando **SQL**.
+**Data Detective** is an educational game where players solve investigations using **SQL**.
 
-A ideia do projeto é ensinar e praticar SQL de uma forma mais divertida: investigando casos, analisando bancos de dados e descobrindo quem é o culpado.
+The idea behind the project is to teach and practice SQL in a more engaging way: by investigating cases, analyzing databases, and discovering who the culprit is.
 
-O projeto foi inspirado no **SQL Murder Mystery**, mas com uma interface mais moderna e com diferentes tipos de investigações.
+The project was inspired by **SQL Murder Mystery**, but with a more modern interface and different types of investigations.
 
-![Print da Interface](https://github.com/user-attachments/assets/c3603c30-1725-40b3-b911-419ac3cccc00)
+![Interface Preview](https://github.com/user-attachments/assets/c3603c30-1725-40b3-b911-419ac3cccc00)
 
 ---
 
-# 🎮 Como funciona
+# 🎮 How it works
 
-O jogador assume o papel de um **Data Detective**, um analista que resolve investigações através da análise de dados.
+The player takes on the role of a **Data Detective**, an analyst who solves investigations through data analysis.
 
-Cada caso possui:
+Each case includes:
 
-- uma história
-- um banco de dados
-- pistas
-- vários suspeitos
+- a story
+- a database
+- clues
+- multiple suspects
 
-O jogador pode executar **queries SQL** para investigar os dados e descobrir quem é o culpado.
+The player can execute **SQL queries** to investigate the data and find the culprit.
 
-Como existem várias formas de chegar ao resultado usando SQL, o sistema não valida uma query específica.  
-No final da investigação o jogador escolhe o suspeito correto.
+Since there are multiple ways to reach the solution using SQL, the system does not validate a specific query.  
+At the end of the investigation, the player selects the correct suspect.
 
 ---
 
 # 🖥️ Interface
 
-O site terá uma interface inspirada em **computadores antigos**, como se o jogador estivesse usando um sistema operacional de investigação.
+The website features an interface inspired by **old computers**, as if the player were using an investigation operating system.
 
-Elementos da interface:
+Interface elements include:
 
-- tela de inicialização (boot screen)
-- login estilo sistemas antigos
-- área de trabalho (desktop)
-- aplicativos de investigação
-- pasta com casos
-- editor SQL
+- boot screen
+- retro-style login
+- desktop environment
+- investigation apps
+- case folder system
+- SQL editor
 
-Também existe um guia chamado **Operador Vega**, que ajuda o jogador durante o jogo.
-
----
-
-# 📁 Casos
-
-Atualmente o jogo possui os seguintes casos:
-
-### Caso 1 — Assassinato
-Investigação de um homicídio usando registros e depoimentos.
-
-### Caso 2 — Fraude Financeira
-Transferências suspeitas indicam possível desvio de dinheiro dentro de uma empresa.
-
-### Caso 3 — Ataque Hacker
-Logs de acesso indicam que alguém dentro da empresa ajudou em um ataque cibernético.
-
-### Caso 4 — Vazamento de Espionagem
-Um documento classificado como **Top Secret** foi vazado para uma empresa rival.
-
-### Caso 5 — Fuga no Estacionamento
-Uma fuga após tentativa de extorsão exige cruzar placas, proprietários e depoimentos.
-
-### Caso 6 — Pagamentos em Lote
-Auditoria encontra transferências repetidas e suspeitas para a mesma conta.
-
-### Caso 7 — Vazamento Coordenado
-Acessos noturnos e contatos externos sugerem ação interna para vazamento de informação.
+There is also a guide called **Operator Vega**, who helps the player during the game.
 
 ---
 
-# 🧠 Tutorial SQL
+# 📁 Cases
 
-Para quem não sabe SQL, o jogo possui um **tutorial interativo** que ensina:
+Currently, the game includes the following cases:
+
+### Case 1 — Murder
+Investigation of a homicide using records and testimonies.
+
+### Case 2 — Financial Fraud
+Suspicious transactions indicate possible internal embezzlement.
+
+### Case 3 — Hacker Attack
+Access logs suggest that someone inside the company assisted in a cyber attack.
+
+### Case 4 — Espionage Leak
+A **Top Secret** document was leaked to a rival company.
+
+### Case 5 — Parking Lot Escape
+A getaway after an extortion attempt requires matching plates, owners, and testimonies.
+
+### Case 6 — Batch Payments
+An audit reveals repeated and suspicious transfers to the same account.
+
+### Case 7 — Coordinated Leak
+Nighttime access and external contacts suggest an internal data leak operation.
+
+---
+
+# 🧠 SQL Tutorial
+
+For those who don't know SQL, the game includes an **interactive tutorial** that teaches:
 
 - SELECT
 - WHERE
@@ -83,56 +92,56 @@ Para quem não sabe SQL, o jogo possui um **tutorial interativo** que ensina:
 - GROUP BY
 - JOIN
 
-Assim qualquer pessoa pode aprender SQL jogando.
+This allows anyone to learn SQL while playing.
 
 ---
 
-# 👥 Equipe
+# 👥 Team
 
-Este projeto está sendo desenvolvido por:
+This project is being developed by:
 
-- **Lucas Leuck de Oliveira ( github.com/lucasnk1 )** – idealização do projeto / desenvolvimento
-- **Augusto Kulzer ( github.com/gutokulzer )** – desenvolvimento / criação de casos
-- **Eduardo Dias ( github.com/eduudiass )** – desenvolvimento / banco de dados
-- **Pedro Sangalli ( github.com/pSangali )** – desenvolvimento / criação de casos
+- **Lucas Leuck de Oliveira ( github.com/lucasnk1 )** – project idea / development
+- **Augusto Kulzer ( github.com/gutokulzer )** – development / case design
+- **Eduardo Dias ( github.com/eduudiass )** – development / database
+- **Pedro Sangalli ( github.com/pSangali )** – development / case design
 
 ---
 
-# 🏆 Sistema de Progressão
+# 🏆 Progression System
 
-O jogador ganha **XP** ao resolver casos.
+Players earn **XP** by solving cases.
 
-Cargos possíveis:
+Possible ranks:
 
-- Data Detective Júnior
+- Junior Data Detective
 - Data Detective
-- Investigador Sênior
-- Chefe de Investigação de Dados
+- Senior Investigator
+- Head of Data Investigation
 
-Também existem **conquistas** e **tempo de resolução** de cada caso.
-
----
-
-# 💾 Progresso do Jogador
-
-O progresso do jogador por enquanto é salvo diretamente no navegador utilizando **localStorage**.
-
-Isso inclui:
-
-- casos já resolvidos
-- nível do jogador
-- conquistas
-- tempo de resolução dos casos
-
-Dessa forma o jogador pode fechar o site e continuar depois do ponto em que parou.
-
-> Obs: como os dados ficam armazenados no navegador; usar outro pc, limpar o cache ou os dados do navegador pode apagar o progresso.
+There are also **achievements** and **completion time tracking** for each case.
 
 ---
 
-# 🛠️ Tecnologias
+# 💾 Player Progress
 
-O projeto está sendo desenvolvido com:
+Player progress is currently stored in the browser using **localStorage**.
+
+This includes:
+
+- completed cases
+- player level
+- achievements
+- case completion time
+
+This allows players to leave and continue later from where they stopped.
+
+> Note: since data is stored in the browser, using another device or clearing cache may erase progress.
+
+---
+
+# 🛠️ Technologies
+
+The project is being developed with:
 
 - React
 - Next.js
@@ -143,38 +152,38 @@ O projeto está sendo desenvolvido com:
 
 ---
 
-# 👥 Colaboração
+# 👥 Collaboration
 
-Este projeto está sendo desenvolvido em colaboração com colegas como forma de:
+This project is being developed collaboratively as a way to:
 
-- estudar programação
-- praticar SQL
-- aprender desenvolvimento web
-- construir projetos para portfólio
+- study programming
+- practice SQL
+- learn web development
+- build portfolio projects
 
-Também estamos usando o projeto para ensinar SQL na prática.
+We are also using it as a practical way to teach SQL.
 
 ---
 
-# 🚧 Status do projeto
+# 🚧 Project Status
 
-Projeto em desenvolvimento.
+Project in development.
 
-Ideias futuras:
+Future ideas:
 
-- mais casos investigativos
+- more investigation cases
 - leaderboard
-- novos tipos de banco de dados
-- criação de casos pela comunidade
+- new types of databases
+- community-created cases
 
 ---
 
-# 💡 Motivação
+# 💡 Motivation
 
-Esse projeto começou como um experimento de **vibe coding** para aprender mais sobre:
+This project started as a **vibe coding experiment** to learn more about:
 
 - SQL
-- desenvolvimento web
-- criação de projetos interativos
+- web development
+- building interactive projects
 
-A ideia é transformar aprendizado técnico em algo mais divertido e prático.
+The goal is to turn technical learning into something more fun and practical.
