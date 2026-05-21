@@ -3,6 +3,7 @@ import { RetroWindow } from "./RetroWindow";
 import { SqlEditor } from "./SqlEditor";
 import { ResultsTable } from "./ResultsTable";
 import { SchemaViewer } from "./SchemaViewer";
+import { ModelViewer } from "./ModelViewer";
 import { api } from "@/lib/api";
 
 export function CaseWindow({
@@ -37,6 +38,7 @@ export function CaseWindow({
   const [selectedSuspect, setSelectedSuspect] = React.useState<string>("");
   const [answerMsg, setAnswerMsg] = React.useState<string | null>(null);
   const [caseSolved, setCaseSolved] = React.useState(false);
+  const [activeRightTab, setActiveRightTab] = React.useState<"schema" | "model">("schema");
 
   React.useEffect(() => {
     if (!open) return;
@@ -96,6 +98,7 @@ export function CaseWindow({
     setSelectedSuspect("");
     setAnswerMsg(null);
     setCaseSolved(false);
+    setActiveRightTab("schema");
   }, [caseId, open]);
 
   if (!open) return null;
@@ -209,8 +212,40 @@ export function CaseWindow({
             </div>
           </div>
 
-          {/* DIREITA: schema */}
-          <SchemaViewer schema={schema} />
+          {/* DIREITA: schema / modelo er */}
+          <div className="flex h-full flex-col gap-1 overflow-hidden">
+            {/* Tabs */}
+            <div className="flex gap-1 text-xs select-none">
+              <button
+                className={`px-3 py-1 border-t-2 border-x-2 rounded-t-sm transition-all cursor-pointer ${
+                  activeRightTab === "schema"
+                    ? "bg-[var(--dd-window)] border-t-[var(--dd-border-light)] border-x-[var(--dd-border-light)] font-bold translate-y-[2px] z-10"
+                    : "bg-[var(--dd-window-2)] border-t-[var(--dd-border-light)] border-x-[var(--dd-border-dark)] opacity-70"
+                }`}
+                onClick={() => setActiveRightTab("schema")}
+              >
+                Tabelas (Schema)
+              </button>
+              <button
+                className={`px-3 py-1 border-t-2 border-x-2 rounded-t-sm transition-all cursor-pointer ${
+                  activeRightTab === "model"
+                    ? "bg-[var(--dd-window)] border-t-[var(--dd-border-light)] border-x-[var(--dd-border-light)] font-bold translate-y-[2px] z-10"
+                    : "bg-[var(--dd-window-2)] border-t-[var(--dd-border-light)] border-x-[var(--dd-border-dark)] opacity-70"
+                }`}
+                onClick={() => setActiveRightTab("model")}
+              >
+                Modelo ER
+              </button>
+            </div>
+            {/* Conteudo da Tab */}
+            <div className="flex-1 overflow-hidden">
+              {activeRightTab === "schema" ? (
+                <SchemaViewer schema={schema} />
+              ) : (
+                <ModelViewer caseId={caseId} />
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </RetroWindow>
