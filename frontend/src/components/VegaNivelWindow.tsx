@@ -26,7 +26,7 @@ export function VegaNivelWindow({
       onClose={onClose}
       width={420}
       height={260}
-      defaultPos={defaultPos || { x: 560, y: 120 }}
+      defaultPos={defaultPos}
       zIndex={zIndex}
       onFocus={onFocus}
       resizable={false}

@@ -28,7 +28,7 @@ export function VegaChat({
       onClose={onClose}
       width={320}
       height={240}
-      defaultPos={defaultPos || { x: 780, y: 420 }}
+      defaultPos={defaultPos}
       zIndex={zIndex}
       onFocus={onFocus}
     >

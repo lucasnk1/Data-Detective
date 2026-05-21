@@ -20,7 +20,7 @@ export function RetroWindow({
   onClose,
   width = 520,
   height = 360,
-  defaultPos = { x: 80, y: 80 },
+  defaultPos,
   zIndex = 10,
   onFocus,
   resizable = true,
@@ -31,7 +31,20 @@ export function RetroWindow({
 }: Props) {
   // React 19: evitar findDOMNode (que não existe mais)
   const nodeRef = React.useRef<HTMLDivElement>(null);
-  const [pos, setPos] = React.useState(defaultPos);
+
+  // Centraliza a janela na tela se nenhum defaultPos for fornecido
+  const centeredPos = React.useMemo(() => {
+    if (defaultPos) return defaultPos;
+    if (typeof window === "undefined") return { x: 80, y: 80 };
+    const taskbarHeight = 40;
+    const availH = window.innerHeight - taskbarHeight;
+    return {
+      x: Math.max(0, Math.round((window.innerWidth - width) / 2)),
+      y: Math.max(0, Math.round((availH - height) / 2)),
+    };
+  }, [defaultPos, width, height]);
+
+  const [pos, setPos] = React.useState(centeredPos);
   const [size, setSize] = React.useState({ width, height });
   const [maximized, setMaximized] = React.useState(false);
 
@@ -87,6 +100,8 @@ export function RetroWindow({
         zIndex,
       }
     : {
+        left: 0,
+        top: 0,
         width: size.width,
         height: size.height,
         zIndex,

@@ -90,6 +90,7 @@ export default function DesktopPage() {
   }, []);
 
   const [openCaseId, setOpenCaseId] = React.useState<number | null>(null);
+  const [casesRefreshToken, setCasesRefreshToken] = React.useState(0);
 
   if (!token) return null;
 
@@ -162,6 +163,7 @@ export default function DesktopPage() {
           token={token}
           zIndex={z.casos}
           onFocus={() => focus("casos")}
+          refreshToken={casesRefreshToken}
           onOpenCase={(id) => {
             setOpenCaseId(id);
             setOpenKey(`caso-${id}` as WinKey, true);
@@ -176,6 +178,7 @@ export default function DesktopPage() {
             caseId={openCaseId}
             zIndex={z[`caso-${openCaseId}`] || 40}
             onFocus={() => focus(`caso-${openCaseId}` as WinKey)}
+            onSolved={() => setCasesRefreshToken((value) => value + 1)}
           />
         ) : null}
 
@@ -200,7 +203,7 @@ export default function DesktopPage() {
           open={open.conquistas}
           onClose={() => setOpenKey("conquistas", false)}
           title="🏅 Conquistas"
-          defaultPos={{ x: 220, y: 130 }}
+
           zIndex={z.conquistas}
           onFocus={() => focus("conquistas")}
         >
@@ -222,7 +225,7 @@ export default function DesktopPage() {
           open={open.estatisticas}
           onClose={() => setOpenKey("estatisticas", false)}
           title="📊 Estatísticas"
-          defaultPos={{ x: 260, y: 170 }}
+
           zIndex={z.estatisticas}
           onFocus={() => focus("estatisticas")}
         >
@@ -236,7 +239,7 @@ export default function DesktopPage() {
           open={open.config}
           onClose={() => setOpenKey("config", false)}
           title="⚙ Configurações"
-          defaultPos={{ x: 300, y: 210 }}
+
           zIndex={z.config}
           onFocus={() => focus("config")}
         >

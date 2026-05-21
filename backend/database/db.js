@@ -233,6 +233,15 @@ function initDb() {
       insertAccess.run(2, 1, "dev_notes", "11:00");
       insertAccess.run(3, 4, "project_docs", "10:20");
 
+      db.prepare(
+        "INSERT INTO interviews (id, person_id, date, transcript) VALUES (?, ?, ?, ?)"
+      ).run(
+        4,
+        8,
+        "2026-03-11",
+        "No estacionamento, ouvi alguém comentar que o carro SPX-1180 era do Carlos Nogueira."
+      );
+
       // Caso 4 - Vazamento de Espionagem
       const insertDoc = db.prepare(
         "INSERT INTO documents (id, title, classification) VALUES (?, ?, ?)"
@@ -255,6 +264,19 @@ function initDb() {
       insertContact.run(1, 4, "Nova Defense");
       insertContact.run(2, 2, "University Lab");
     });
+
+    const hasCase5Interview =
+      db.prepare("SELECT COUNT(*) AS c FROM interviews WHERE id = 4").get().c > 0;
+    if (!hasCase5Interview) {
+      db.prepare(
+        "INSERT INTO interviews (id, person_id, date, transcript) VALUES (?, ?, ?, ?)"
+      ).run(
+        4,
+        8,
+        "2026-03-11",
+        "No estacionamento, ouvi alguém comentar que o carro SPX-1180 era do Carlos Nogueira."
+      );
+    }
 
     tx();
   }

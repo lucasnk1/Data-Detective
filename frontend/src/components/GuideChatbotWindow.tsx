@@ -87,7 +87,7 @@ export function GuideChatbotWindow({
       onClose={onClose}
       width={380}
       height={320}
-      defaultPos={defaultPos || { x: 760, y: 260 }}
+      defaultPos={defaultPos}
       zIndex={zIndex}
       onFocus={onFocus}
       minWidth={320}

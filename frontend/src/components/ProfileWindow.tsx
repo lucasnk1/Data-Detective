@@ -82,7 +82,7 @@ export function ProfileWindow({
       onClose={onClose}
       width={640}
       height={520}
-      defaultPos={defaultPos || { x: 220, y: 80 }}
+      defaultPos={defaultPos}
       zIndex={zIndex}
       onFocus={onFocus}
       minWidth={520}

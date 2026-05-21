@@ -1,0 +1,41 @@
+{
+  "id": 6,
+  "slug": "caso6-pagamentos-em-lote",
+  "title": "Caso 6 — Pagamentos em Lote",
+  "category": {
+    "id": "categoria2",
+    "title": "Crimes Cibernéticos"
+  },
+  "narrative": {
+    "titulo": "Auditoria Interna",
+    "texto": "O time de auditoria encontrou uma sequência de pagamentos fora do padrão para a mesma conta.\n\nO comportamento sugere fracionamento de risco para ocultar desvio financeiro."
+  },
+  "objective": "Descubra qual funcionário concentra os maiores pagamentos suspeitos relacionando employees, transactions e accounts.",
+  "initialClue": "Os pagamentos suspeitos são transferências altas para a conta Orion Trade.",
+  "tables": ["employees", "transactions", "accounts"],
+  "schema": {
+    "employees": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "name", "type": "TEXT", "notnull": true },
+      { "name": "department", "type": "TEXT", "notnull": true }
+    ],
+    "transactions": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "employee_id", "type": "INTEGER", "notnull": true },
+      { "name": "account_id", "type": "INTEGER", "notnull": true },
+      { "name": "amount", "type": "REAL", "notnull": true },
+      { "name": "date", "type": "TEXT", "notnull": true }
+    ],
+    "accounts": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "name", "type": "TEXT", "notnull": true },
+      { "name": "company", "type": "TEXT", "notnull": true }
+    ]
+  },
+  "poll": {
+    "question": "Quem liderou os pagamentos suspeitos em lote?",
+    "options": ["Ana Ribeiro", "Carlos Mendes", "Bruno Costa", "Juliana Prado"],
+    "correct": "Carlos Mendes"
+  },
+  "rewardXp": 280
+}

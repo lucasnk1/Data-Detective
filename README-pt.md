@@ -57,28 +57,26 @@ Também existe um guia chamado **Operador Vega**, que ajuda o jogador durante o 
 
 # 📁 Casos
 
-Atualmente o jogo possui os seguintes casos:
+Atualmente os casos estão organizados por categoria:
 
-### Caso 1 — Assassinato
-Investigação de um homicídio usando registros e depoimentos.
+### Homicídios
+- Caso 1 — Assassinato
 
-### Caso 2 — Fraude Financeira
-Transferências suspeitas indicam possível desvio de dinheiro dentro de uma empresa.
+### Crimes Cibernéticos
+- Caso 2 — Fraude Financeira
+- Caso 3 — Ataque Hacker
+- Caso 4 — Vazamento de Espionagem
+- Caso 6 — Pagamentos em Lote
+- Caso 7 — Vazamento Coordenado
 
-### Caso 3 — Ataque Hacker
-Logs de acesso indicam que alguém dentro da empresa ajudou em um ataque cibernético.
+### Fugas
+- Caso 5 — Fuga no Estacionamento
 
-### Caso 4 — Vazamento de Espionagem
-Um documento classificado como **Top Secret** foi vazado para uma empresa rival.
+### Crimes Financeiros
+- sem casos por enquanto
 
-### Caso 5 — Fuga no Estacionamento
-Uma fuga após tentativa de extorsão exige cruzar placas, proprietários e depoimentos.
-
-### Caso 6 — Pagamentos em Lote
-Auditoria encontra transferências repetidas e suspeitas para a mesma conta.
-
-### Caso 7 — Vazamento Coordenado
-Acessos noturnos e contatos externos sugerem ação interna para vazamento de informação.
+### Espionagem
+- sem casos por enquanto
 
 ---
 

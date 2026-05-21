@@ -1,0 +1,45 @@
+{
+  "id": 4,
+  "slug": "caso4-espionagem",
+  "title": "Caso 4 — Vazamento de Espionagem",
+  "category": {
+    "id": "categoria2",
+    "title": "Crimes Cibernéticos"
+  },
+  "narrative": {
+    "titulo": "Relatório de Contrainteligência",
+    "texto": "A empresa Helix Defense trabalha com tecnologia militar. Um documento classificado como TOP SECRET foi vazado.\n\nA suspeita é que um funcionário esteja passando informações para uma empresa rival."
+  },
+  "objective": "Descobrir quem acessou documentos TOP SECRET, quem possui contatos com empresas externas e quem provavelmente vazou o documento.",
+  "initialClue": "O documento vazado tinha classificação TOP SECRET.",
+  "tables": ["employees", "documents", "document_access", "external_contacts"],
+  "schema": {
+    "employees": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "name", "type": "TEXT", "notnull": true },
+      { "name": "department", "type": "TEXT", "notnull": true }
+    ],
+    "documents": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "title", "type": "TEXT", "notnull": true },
+      { "name": "classification", "type": "TEXT", "notnull": true }
+    ],
+    "document_access": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "employee_id", "type": "INTEGER", "notnull": true },
+      { "name": "document_id", "type": "INTEGER", "notnull": true },
+      { "name": "date", "type": "TEXT", "notnull": true }
+    ],
+    "external_contacts": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "employee_id", "type": "INTEGER", "notnull": true },
+      { "name": "company", "type": "TEXT", "notnull": true }
+    ]
+  },
+  "poll": {
+    "question": "Quem provavelmente vazou o documento TOP SECRET?",
+    "options": ["Lucas Andrade", "Marina Duarte", "Felipe Rocha", "Renata Campos"],
+    "correct": "Renata Campos"
+  },
+  "rewardXp": 250
+}

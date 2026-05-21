@@ -47,4 +47,3 @@ CREATE TABLE external_contacts (
 INSERT INTO external_contacts (id, employee_id, company) VALUES
   (1, 4, 'Nova Defense'),
   (2, 2, 'University Lab');
-

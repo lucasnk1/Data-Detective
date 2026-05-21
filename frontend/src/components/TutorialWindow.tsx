@@ -140,7 +140,7 @@ export function TutorialWindow({
       onClose={onClose}
       width={860}
       height={540}
-      defaultPos={defaultPos || { x: 160, y: 70 }}
+      defaultPos={defaultPos}
       zIndex={zIndex}
       onFocus={onFocus}
       minWidth={640}

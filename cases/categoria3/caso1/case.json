@@ -1,0 +1,44 @@
+{
+  "id": 5,
+  "slug": "caso5-fuga-no-estacionamento",
+  "title": "Caso 5 — Fuga no Estacionamento",
+  "category": {
+    "id": "categoria3",
+    "title": "Fugas"
+  },
+  "narrative": {
+    "titulo": "Relatório de Ocorrência",
+    "texto": "Após uma tentativa de extorsão, o suspeito fugiu usando um veículo estacionado próximo ao local.\n\nTestemunhas indicam que a placa começava com SPX e que o condutor já havia sido mencionado em depoimentos anteriores."
+  },
+  "objective": "Cruze as tabelas people, vehicles e interviews para identificar o condutor ligado ao veículo suspeito.",
+  "initialClue": "A placa parcial informada por uma testemunha foi SPX.",
+  "tables": ["people", "vehicles", "interviews"],
+  "schema": {
+    "people": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "name", "type": "TEXT", "notnull": true },
+      { "name": "age", "type": "INTEGER", "notnull": false },
+      { "name": "city", "type": "TEXT", "notnull": false },
+      { "name": "occupation", "type": "TEXT", "notnull": false }
+    ],
+    "vehicles": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "owner_id", "type": "INTEGER", "notnull": true },
+      { "name": "plate", "type": "TEXT", "notnull": true },
+      { "name": "model", "type": "TEXT", "notnull": true },
+      { "name": "color", "type": "TEXT", "notnull": true }
+    ],
+    "interviews": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "person_id", "type": "INTEGER", "notnull": true },
+      { "name": "date", "type": "TEXT", "notnull": true },
+      { "name": "transcript", "type": "TEXT", "notnull": true }
+    ]
+  },
+  "poll": {
+    "question": "Quem estava ligado ao veículo usado na fuga?",
+    "options": ["Carlos Nogueira", "Sofia Martins", "Igor Batista", "Bruno Lima"],
+    "correct": "Carlos Nogueira"
+  },
+  "rewardXp": 260
+}

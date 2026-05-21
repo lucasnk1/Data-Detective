@@ -38,4 +38,3 @@ INSERT INTO transactions (id, employee_id, account_id, amount, date) VALUES
   (3, 2, 202, 500, '2024-05-12'),
   (4, 1, 201, 15000, '2024-05-13'),
   (5, 3, 203, 800, '2024-05-13');
-

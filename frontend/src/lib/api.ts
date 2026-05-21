@@ -1,4 +1,4 @@
-import { cases } from "./casesData";
+import { cases, categories } from "./casesData";
 
 const API_BASE =
   process.env.NEXT_PUBLIC_API_BASE ||
@@ -143,7 +143,8 @@ async function getSqlDb() {
     INSERT INTO interviews (id, person_id, date, transcript) VALUES
       (1, 1, '2026-03-10', 'Eu ouvi um carro acelerando e vi uma pessoa de jaqueta preta perto do beco.'),
       (2, 2, '2026-03-10', 'Trabalho ali perto. Vi um sedã prata com placa começando com ''DDT'' saindo na contramão.'),
-      (3, 7, '2026-03-10', 'O Ricardo estava nervoso nos últimos dias. Falava que alguém tinha acesso às coisas dele.');
+      (3, 7, '2026-03-10', 'O Ricardo estava nervoso nos últimos dias. Falava que alguém tinha acesso às coisas dele.'),
+      (4, 8, '2026-03-11', 'No estacionamento, ouvi alguém comentar que o carro SPX-1180 era do Carlos Nogueira.');
 
     INSERT INTO vehicles (id, owner_id, plate, model, color) VALUES
       (1, 6, 'DDT-4021', 'Sedã', 'Prata'),
@@ -266,9 +267,21 @@ async function mockRequest<T>(path: string, opts: RequestInit & { token?: string
       const prev = idx > 0 ? cases[idx - 1] : null;
       const prevSolved =
         !prev || (prog.solved[prev.id] && prog.solved[prev.id].finishedAt);
-      return { id: c.id, title: c.title, unlocked: prevSolved, slug: c.slug };
+      return {
+        id: c.id,
+        title: c.title,
+        unlocked: prevSolved,
+        slug: c.slug,
+        categoryId: c.category?.id || "categoria1",
+        categoryTitle: c.category?.title || "Categoria 1"
+      };
     });
-    return { ok: true, cases: list, xp: prog.xp } as any;
+    const grouped = categories.map((category) => ({
+      id: category.id,
+      title: category.title,
+      cases: list.filter((item) => item.categoryId === category.id)
+    }));
+    return { ok: true, cases: list, categories: grouped, xp: prog.xp } as any;
   }
 
   const caseMatch = path.match(/^\/cases\/(\d+)(?:\/(schema|query|answer))?$/);

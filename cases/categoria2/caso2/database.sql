@@ -37,4 +37,3 @@ INSERT INTO server_access (id, employee_id, resource, time) VALUES
   (1, 3, 'client_database', '23:50'),
   (2, 1, 'dev_notes', '11:00'),
   (3, 4, 'project_docs', '10:20');
-

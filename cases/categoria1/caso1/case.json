@@ -1,0 +1,51 @@
+{
+  "id": 1,
+  "slug": "caso1-assassinato",
+  "title": "Caso 1 — Assassinato",
+  "category": {
+    "id": "categoria1",
+    "title": "Homicídios"
+  },
+  "narrative": {
+    "titulo": "Relatório policial",
+    "texto": "Vítima: Ricardo Viana. Local: Beco da Aurora, Centro. Horário estimado: 22:40.\n\nDepoimentos foram coletados. Um veículo foi visto saindo rapidamente. Sua missão é identificar o principal suspeito usando SQL."
+  },
+  "objective": "Usando o banco de dados (people, crime_reports, interviews, vehicles), descubra quem é o principal suspeito.",
+  "initialClue": "Um sedã prata com placa começando em 'DDT' foi visto deixando o local do crime.",
+  "tables": ["people", "crime_reports", "interviews", "vehicles"],
+  "schema": {
+    "people": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "name", "type": "TEXT", "notnull": true },
+      { "name": "age", "type": "INTEGER", "notnull": false },
+      { "name": "city", "type": "TEXT", "notnull": false },
+      { "name": "occupation", "type": "TEXT", "notnull": false }
+    ],
+    "crime_reports": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "date", "type": "TEXT", "notnull": true },
+      { "name": "location", "type": "TEXT", "notnull": true },
+      { "name": "victim_name", "type": "TEXT", "notnull": true },
+      { "name": "summary", "type": "TEXT", "notnull": true }
+    ],
+    "interviews": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "person_id", "type": "INTEGER", "notnull": true },
+      { "name": "date", "type": "TEXT", "notnull": true },
+      { "name": "transcript", "type": "TEXT", "notnull": true }
+    ],
+    "vehicles": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "owner_id", "type": "INTEGER", "notnull": true },
+      { "name": "plate", "type": "TEXT", "notnull": true },
+      { "name": "model", "type": "TEXT", "notnull": true },
+      { "name": "color", "type": "TEXT", "notnull": true }
+    ]
+  },
+  "poll": {
+    "question": "Quem é o principal suspeito pelo assassinato?",
+    "options": ["Marina Rocha", "Bruno Lima", "Sofia Martins", "Igor Batista"],
+    "correct": "Sofia Martins"
+  },
+  "rewardXp": 200
+}

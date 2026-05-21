@@ -1,7 +1,7 @@
 const express = require("express");
 const { getDb } = require("../database/db");
 const { getSession } = require("../auth/sessionStore");
-const { cases } = require("../game/casesData");
+const { cases, categories } = require("../game/casesData");
 const { getProgress } = require("../game/progressStore");
 
 const router = express.Router();
@@ -61,10 +61,17 @@ router.get("/", (req, res) => {
       id: c.id,
       title: c.title,
       unlocked: prevSolved,
-      slug: c.slug
+      slug: c.slug,
+      categoryId: c.category?.id || "categoria1",
+      categoryTitle: c.category?.title || "Categoria 1"
     };
   });
-  res.json({ ok: true, cases: list, xp: prog.xp });
+  const grouped = categories.map((category) => ({
+    id: category.id,
+    title: category.title,
+    cases: list.filter((item) => item.categoryId === category.id)
+  }));
+  res.json({ ok: true, cases: list, categories: grouped, xp: prog.xp });
 });
 
 router.get("/:id", (req, res) => {

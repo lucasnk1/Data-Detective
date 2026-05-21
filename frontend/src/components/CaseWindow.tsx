@@ -10,6 +10,7 @@ export function CaseWindow({
   onClose,
   token,
   caseId,
+  onSolved,
   defaultPos,
   zIndex,
   onFocus,
@@ -18,6 +19,7 @@ export function CaseWindow({
   onClose: () => void;
   token: string;
   caseId: number;
+  onSolved?: () => void;
   defaultPos?: { x: number; y: number };
   zIndex?: number;
   onFocus?: () => void;
@@ -79,6 +81,7 @@ export function CaseWindow({
     if (r.correct) {
       setCaseSolved(true);
       setAnswerMsg("Caso encerrado! Você acertou o suspeito e ganhou XP.");
+      onSolved?.();
     } else {
       setAnswerMsg("Resposta errada. Tente novamente, agente.");
     }
@@ -105,7 +108,7 @@ export function CaseWindow({
       onClose={onClose}
       width={980}
       height={560}
-      defaultPos={defaultPos || { x: 60, y: 40 }}
+      defaultPos={defaultPos}
       zIndex={zIndex}
       onFocus={onFocus}
     >
