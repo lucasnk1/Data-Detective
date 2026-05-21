@@ -19,6 +19,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <Head>
         <title>Data Detective</title>
         <meta name="description" content="Jogo educativo de investigação com SQL (PT-BR)" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Component {...pageProps} />
     </>
