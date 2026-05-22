@@ -12,9 +12,9 @@ Estrutura esperada:
 
 Cada categoria pode conter uma ou mais pastas de caso, por exemplo:
 
-- `cases/categoria2/caso1/`
-- `cases/categoria2/caso2/`
-- `cases/categoria3/caso1/`
+- `cases/categoria1/caso1/` (casos 1–10 da categoria 1)
+- `cases/categoria2/caso11/` (primeiro caso da categoria 2; numeração global)
+- `cases/categoria3/caso21/` (primeiro caso da categoria 3)
 
 Dentro de cada pasta de caso, mantenha sempre estes arquivos:
 
@@ -30,7 +30,7 @@ Dentro de cada pasta de caso, mantenha sempre estes arquivos:
 
 ## Como criar um novo caso dentro de uma categoria
 
-1. Crie uma nova pasta dentro da categoria desejada, por exemplo `cases/categoria2/caso6/`.
+1. Crie uma nova pasta dentro da categoria desejada, usando o **id global** do caso (ex.: `cases/categoria2/caso16/` para o 6º caso da categoria 2).
 2. Crie o arquivo `case.json` com os dados do caso.
 3. Crie o arquivo `database.sql` com o banco daquele caso.
 4. Atualize o catálogo de casos para que a interface mostre o novo caso.

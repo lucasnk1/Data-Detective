@@ -1,10 +1,10 @@
 import case1 from "../../../cases/categoria1/caso1/case.json";
-import case2 from "../../../cases/categoria2/caso1/case.json";
-import case3 from "../../../cases/categoria2/caso2/case.json";
-import case4 from "../../../cases/categoria2/caso3/case.json";
-import case5 from "../../../cases/categoria3/caso1/case.json";
-import case6 from "../../../cases/categoria2/caso4/case.json";
-import case7 from "../../../cases/categoria2/caso5/case.json";
+import case11 from "../../../cases/categoria2/caso11/case.json";
+import case12 from "../../../cases/categoria2/caso12/case.json";
+import case13 from "../../../cases/categoria2/caso13/case.json";
+import case14 from "../../../cases/categoria2/caso14/case.json";
+import case15 from "../../../cases/categoria2/caso15/case.json";
+import case21 from "../../../cases/categoria3/caso21/case.json";
 
 type CaseSchemaField = {
   name: string;
@@ -27,7 +27,7 @@ export type CaseData = {
   rewardXp: number;
 };
 
-export const cases: CaseData[] = [case1, case2, case3, case4, case5, case6, case7] as CaseData[];
+export const cases: CaseData[] = [case1, case11, case12, case13, case14, case15, case21] as CaseData[];
 
 const categoryOrder = ["categoria1", "categoria2", "categoria3", "categoria4", "categoria5"] as const;
 const categoryTitles: Record<(typeof categoryOrder)[number], string> = {
