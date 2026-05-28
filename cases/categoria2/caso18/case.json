@@ -1,0 +1,50 @@
+{
+  "id": 18,
+  "slug": "caso18-mineracao-ilegal",
+  "title": "Caso 18 — Mineração Oculta",
+  "category": {
+    "id": "categoria2",
+    "title": "Crimes Cibernéticos"
+  },
+  "narrative": {
+    "titulo": "Relatório de Infraestrutura",
+    "texto": "A empresa DataCore percebeu consumo anormal de CPU em seus servidores nos últimos 30 dias. A equipe de infraestrutura detectou um processo não catalogado rodando em segundo plano.\n\nO processo foi instalado por alguém com acesso ao ambiente de produção. Logs de deploy e de autenticação podem revelar o responsável."
+  },
+  "objective": "Usando o banco de dados (devs, deploy_log, auth_log, processes), descubra quem instalou o minerador de criptomoeda nos servidores.",
+  "initialClue": "O processo 'xmrig_svc' apareceu pela primeira vez no servidor PROD-03 em 2026-03-28. Verifique quem fez deploy nesse servidor naquele dia.",
+  "tables": ["devs", "deploy_log", "auth_log", "processes"],
+  "schema": {
+    "devs": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "name", "type": "TEXT", "notnull": true },
+      { "name": "username", "type": "TEXT", "notnull": true },
+      { "name": "access_level", "type": "TEXT", "notnull": true }
+    ],
+    "deploy_log": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "username", "type": "TEXT", "notnull": true },
+      { "name": "server", "type": "TEXT", "notnull": true },
+      { "name": "deploy_time", "type": "TEXT", "notnull": true },
+      { "name": "package", "type": "TEXT", "notnull": true }
+    ],
+    "auth_log": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "username", "type": "TEXT", "notnull": true },
+      { "name": "login_time", "type": "TEXT", "notnull": true },
+      { "name": "ip_address", "type": "TEXT", "notnull": true }
+    ],
+    "processes": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "process_name", "type": "TEXT", "notnull": true },
+      { "name": "server", "type": "TEXT", "notnull": true },
+      { "name": "first_seen", "type": "TEXT", "notnull": true },
+      { "name": "cpu_usage", "type": "REAL", "notnull": true }
+    ]
+  },
+  "poll": {
+    "question": "Quem instalou o minerador de criptomoeda?",
+    "options": ["Diego Arantes", "Natália Freire", "Caio Resende", "Isabela Porto"],
+    "correct": "Caio Resende"
+  },
+  "rewardXp": 220
+}

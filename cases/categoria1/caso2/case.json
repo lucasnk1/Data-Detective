@@ -1,0 +1,52 @@
+{
+  "id": 2,
+  "slug": "caso2-assassinato-hotel",
+  "title": "Caso 2 — Morte no Hotel Carioca",
+  "category": {
+    "id": "categoria1",
+    "title": "Homicídios"
+  },
+  "narrative": {
+    "titulo": "Relatório policial",
+    "texto": "Vítima: Paulo Esteves, 52 anos, empresário. Local: Quarto 304, Hotel Carioca, Barra da Tijuca. Horário estimado: 01:20.\n\nA recepção registrou movimentações incomuns naquela noite. O quarto foi reservado em nome de outra pessoa. Sua missão é cruzar os dados de hóspedes, acessos e chamadas para identificar o suspeito."
+  },
+  "objective": "Usando o banco de dados (guests, room_access, calls, staff), identifique quem estava no quarto na hora do crime.",
+  "initialClue": "O quarto 304 foi acessado três vezes entre 00:00 e 02:00. Apenas uma dessas entradas não consta no registro oficial de check-in.",
+  "tables": ["guests", "room_access", "calls", "staff"],
+  "schema": {
+    "guests": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "name", "type": "TEXT", "notnull": true },
+      { "name": "room", "type": "INTEGER", "notnull": true },
+      { "name": "checkin_date", "type": "TEXT", "notnull": true },
+      { "name": "checkout_date", "type": "TEXT", "notnull": false }
+    ],
+    "room_access": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "room", "type": "INTEGER", "notnull": true },
+      { "name": "card_id", "type": "TEXT", "notnull": true },
+      { "name": "access_time", "type": "TEXT", "notnull": true },
+      { "name": "direction", "type": "TEXT", "notnull": true }
+    ],
+    "calls": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "from_room", "type": "INTEGER", "notnull": true },
+      { "name": "to_number", "type": "TEXT", "notnull": true },
+      { "name": "call_time", "type": "TEXT", "notnull": true },
+      { "name": "duration_sec", "type": "INTEGER", "notnull": true }
+    ],
+    "staff": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "name", "type": "TEXT", "notnull": true },
+      { "name": "role", "type": "TEXT", "notnull": true },
+      { "name": "card_id", "type": "TEXT", "notnull": true },
+      { "name": "shift", "type": "TEXT", "notnull": true }
+    ]
+  },
+  "poll": {
+    "question": "Quem é o principal suspeito pela morte de Paulo Esteves?",
+    "options": ["Renata Duarte", "Fábio Nunes", "Cláudia Pinto", "Marcos Aguiar"],
+    "correct": "Fábio Nunes"
+  },
+  "rewardXp": 210
+}

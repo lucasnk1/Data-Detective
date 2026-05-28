@@ -1,0 +1,48 @@
+{
+  "id": 35,
+  "slug": "caso35-casino-lavagem",
+  "title": "Caso 35 — Fichas Limpas",
+  "category": {
+    "id": "categoria4",
+    "title": "Lavagem de Dinheiro"
+  },
+  "narrative": {
+    "titulo": "Relatório de Investigação",
+    "texto": "Um cassino online licenciado em Malta recebeu denúncia de que estava sendo usado para lavagem de dinheiro. O esquema envolvia comprar fichas com dinheiro sujo, jogar o mínimo possível e sacar como 'ganhos'.\n\nOs registros mostram jogadores que depositam valores altos, realizam poucas apostas e sacam quase o valor total. Esse padrão estatístico é anômalo."
+  },
+  "objective": "Usando o banco de dados (players, deposits_casino, bets, cashouts), identifique qual jogador tem o padrão mais suspeito de lavagem via cassino.",
+  "initialClue": "Um jogador depositou R$ 500 mil, apostou apenas R$ 8 mil no total e sacou R$ 490 mil como 'ganhos'. Calcule a taxa de apostas sobre depósito para cada jogador.",
+  "tables": ["players", "deposits_casino", "bets", "cashouts"],
+  "schema": {
+    "players": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "name", "type": "TEXT", "notnull": true },
+      { "name": "cpf", "type": "TEXT", "notnull": true },
+      { "name": "country", "type": "TEXT", "notnull": true }
+    ],
+    "deposits_casino": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "player_id", "type": "INTEGER", "notnull": true },
+      { "name": "amount", "type": "REAL", "notnull": true },
+      { "name": "deposit_date", "type": "TEXT", "notnull": true }
+    ],
+    "bets": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "player_id", "type": "INTEGER", "notnull": true },
+      { "name": "amount", "type": "REAL", "notnull": true },
+      { "name": "bet_date", "type": "TEXT", "notnull": true }
+    ],
+    "cashouts": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "player_id", "type": "INTEGER", "notnull": true },
+      { "name": "amount", "type": "REAL", "notnull": true },
+      { "name": "cashout_date", "type": "TEXT", "notnull": true }
+    ]
+  },
+  "poll": {
+    "question": "Qual jogador está usando o cassino para lavar dinheiro?",
+    "options": ["Bruno Cavalcante", "Priscila Nakamura", "Hélio Santana", "Yara Pinheiro"],
+    "correct": "Hélio Santana"
+  },
+  "rewardXp": 260
+}

@@ -1,0 +1,51 @@
+{
+  "id": 23,
+  "slug": "caso23-fuga-aeroporto",
+  "title": "Caso 23 — Embarque Fantasma",
+  "category": {
+    "id": "categoria3",
+    "title": "Fugas"
+  },
+  "narrative": {
+    "titulo": "Relatório da Receita Federal",
+    "texto": "Um suspeito conseguiu embarcar em um voo internacional mesmo com mandado de prisão ativo. O embarque ocorreu no Aeroporto Internacional de Guarulhos, portão G12.\n\nRegistros de check-in, passagens e controle de passaporte indicam que o suspeito usou um bilhete em nome de outra pessoa. A equipe de segurança não cruzou as bases na hora."
+  },
+  "objective": "Usando o banco de dados (passengers, tickets, passport_control, flights), descubra em qual passagem o suspeito embarcou e qual identidade usou.",
+  "initialClue": "O suspeito tem 38 anos, 1,82m. A câmera do portão G12 capturou o embarque às 21:30. Havia três passageiros no voo naquele horário.",
+  "tables": ["passengers", "tickets", "passport_control", "flights"],
+  "schema": {
+    "passengers": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "name", "type": "TEXT", "notnull": true },
+      { "name": "passport", "type": "TEXT", "notnull": true },
+      { "name": "age", "type": "INTEGER", "notnull": true },
+      { "name": "height_cm", "type": "INTEGER", "notnull": false }
+    ],
+    "tickets": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "passenger_id", "type": "INTEGER", "notnull": true },
+      { "name": "flight_id", "type": "INTEGER", "notnull": true },
+      { "name": "seat", "type": "TEXT", "notnull": true },
+      { "name": "checkin_time", "type": "TEXT", "notnull": false }
+    ],
+    "passport_control": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "passport", "type": "TEXT", "notnull": true },
+      { "name": "gate", "type": "TEXT", "notnull": true },
+      { "name": "scan_time", "type": "TEXT", "notnull": true },
+      { "name": "flagged", "type": "INTEGER", "notnull": true }
+    ],
+    "flights": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "destination", "type": "TEXT", "notnull": true },
+      { "name": "gate", "type": "TEXT", "notnull": true },
+      { "name": "departure", "type": "TEXT", "notnull": true }
+    ]
+  },
+  "poll": {
+    "question": "Qual passageiro é na verdade o suspeito foragido?",
+    "options": ["André Cunha", "Márcio Beltrão", "Sérgio Lopes", "Wagner Assis"],
+    "correct": "Márcio Beltrão"
+  },
+  "rewardXp": 220
+}

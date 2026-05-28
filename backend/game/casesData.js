@@ -7,8 +7,8 @@ const CATEGORY_TITLES = {
   categoria1: "Homicídios",
   categoria2: "Crimes Cibernéticos",
   categoria3: "Fugas",
-  categoria4: "Crimes Financeiros",
-  categoria5: "Espionagem"
+  categoria4: "Lavagem de Dinheiro",
+categoria5: "Fraude de Identidade"
 };
 
 function readCase(caseDir) {

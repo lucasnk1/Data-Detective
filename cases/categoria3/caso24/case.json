@@ -1,0 +1,52 @@
+{
+  "id": 24,
+  "slug": "caso24-fuga-presidiario",
+  "title": "Caso 24 — Saída Autorizada",
+  "category": {
+    "id": "categoria3",
+    "title": "Fugas"
+  },
+  "narrative": {
+    "titulo": "Relatório Penitenciário",
+    "texto": "Um detento de alta periculosidade não retornou da saída temporária. A saída foi concedida com base em um laudo psicológico favorável que agora está sob suspeita de falsificação.\n\nO detento foi visto por câmeras em três locais diferentes nas 6 horas seguintes. Um agente penitenciário pode ter facilitado a fuga."
+  },
+  "objective": "Usando o banco de dados (inmates, temp_releases, agent_log, sightings), descubra qual agente aprovou a saída suspeita e se houve envolvimento intencional.",
+  "initialClue": "O laudo que liberou o detento foi assinado digitalmente, mas o perito responsável estava de licença médica naquela data.",
+  "tables": ["inmates", "temp_releases", "agent_log", "sightings"],
+  "schema": {
+    "inmates": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "name", "type": "TEXT", "notnull": true },
+      { "name": "registration", "type": "TEXT", "notnull": true },
+      { "name": "risk_level", "type": "TEXT", "notnull": true }
+    ],
+    "temp_releases": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "inmate_id", "type": "INTEGER", "notnull": true },
+      { "name": "approved_by", "type": "INTEGER", "notnull": true },
+      { "name": "release_date", "type": "TEXT", "notnull": true },
+      { "name": "return_deadline", "type": "TEXT", "notnull": true },
+      { "name": "returned", "type": "INTEGER", "notnull": true }
+    ],
+    "agent_log": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "agent_id", "type": "INTEGER", "notnull": true },
+      { "name": "name", "type": "TEXT", "notnull": true },
+      { "name": "action", "type": "TEXT", "notnull": true },
+      { "name": "action_date", "type": "TEXT", "notnull": true },
+      { "name": "on_leave", "type": "INTEGER", "notnull": true }
+    ],
+    "sightings": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "inmate_registration", "type": "TEXT", "notnull": true },
+      { "name": "location", "type": "TEXT", "notnull": true },
+      { "name": "sighting_time", "type": "TEXT", "notnull": true }
+    ]
+  },
+  "poll": {
+    "question": "Qual agente aprovou a saída suspeita?",
+    "options": ["Sandro Albuquerque", "Célia Drummond", "Valdir Uchôa", "Mirela Fontes"],
+    "correct": "Valdir Uchôa"
+  },
+  "rewardXp": 230
+}

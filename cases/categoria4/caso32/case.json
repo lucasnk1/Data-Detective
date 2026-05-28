@@ -1,0 +1,50 @@
+{
+  "id": 32,
+  "slug": "caso32-smurfing",
+  "title": "Caso 32 — Operação Formigueiro",
+  "category": {
+    "id": "categoria4",
+    "title": "Lavagem de Dinheiro"
+  },
+  "narrative": {
+    "titulo": "Relatório Bancário",
+    "texto": "O banco Ômega flagrou uma anomalia: dezenas de depósitos em espécie abaixo de R$ 10 mil foram feitos em agências diferentes no mesmo dia, todos destinados à mesma conta.\n\nEssa técnica é conhecida como smurfing: fragmentar grandes quantias para burlar o limite de notificação obrigatória. A conta beneficiária pertence a uma empresa de importação."
+  },
+  "objective": "Usando o banco de dados (deposits, branches, beneficiary_account, individuals), comprove o padrão de smurfing e identifique quem coordenou os depósitos.",
+  "initialClue": "18 depósitos em espécie foram feitos no mesmo dia para a conta CC-IMPORT. Nenhum deles ultrapassou R$ 9.500.",
+  "tables": ["deposits", "branches", "beneficiary_account", "individuals"],
+  "schema": {
+    "deposits": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "depositor_cpf", "type": "TEXT", "notnull": true },
+      { "name": "branch_id", "type": "INTEGER", "notnull": true },
+      { "name": "destination_account", "type": "TEXT", "notnull": true },
+      { "name": "amount", "type": "REAL", "notnull": true },
+      { "name": "deposit_date", "type": "TEXT", "notnull": true }
+    ],
+    "branches": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "name", "type": "TEXT", "notnull": true },
+      { "name": "city", "type": "TEXT", "notnull": true }
+    ],
+    "beneficiary_account": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "account_number", "type": "TEXT", "notnull": true },
+      { "name": "company_name", "type": "TEXT", "notnull": true },
+      { "name": "cnpj", "type": "TEXT", "notnull": true },
+      { "name": "real_owner_cpf", "type": "TEXT", "notnull": true }
+    ],
+    "individuals": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "name", "type": "TEXT", "notnull": true },
+      { "name": "cpf", "type": "TEXT", "notnull": true },
+      { "name": "known_associate_of", "type": "TEXT", "notnull": false }
+    ]
+  },
+  "poll": {
+    "question": "Quem é o real controlador da conta que recebeu os depósitos fragmentados?",
+    "options": ["Edmilson Prates", "Naiara Botelho", "Rômulo Esteves", "Clarice Andrade"],
+    "correct": "Rômulo Esteves"
+  },
+  "rewardXp": 250
+}

@@ -1,0 +1,49 @@
+{
+  "id": 20,
+  "slug": "caso20-exfiltracao-dados",
+  "title": "Caso 20 — Exfiltração Silenciosa",
+  "category": {
+    "id": "categoria2",
+    "title": "Crimes Cibernéticos"
+  },
+  "narrative": {
+    "titulo": "Relatório de Auditoria",
+    "texto": "A Clínica Saúde Prime identificou que dados de 4.200 pacientes foram exportados sem autorização. O arquivo foi compactado e enviado para um servidor externo.\n\nO sistema registra todos os downloads acima de 10MB. Apenas médicos e administradores têm acesso ao módulo de exportação em massa."
+  },
+  "objective": "Usando o banco de dados (staff, download_log, external_connections, access_roles), identifique quem exportou os dados e para qual destino.",
+  "initialClue": "Um arquivo de 48MB chamado 'pacientes_backup.zip' foi baixado às 23:55 de uma sexta-feira.",
+  "tables": ["staff", "download_log", "external_connections", "access_roles"],
+  "schema": {
+    "staff": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "name", "type": "TEXT", "notnull": true },
+      { "name": "username", "type": "TEXT", "notnull": true },
+      { "name": "role_id", "type": "INTEGER", "notnull": true }
+    ],
+    "download_log": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "username", "type": "TEXT", "notnull": true },
+      { "name": "filename", "type": "TEXT", "notnull": true },
+      { "name": "file_size_mb", "type": "REAL", "notnull": true },
+      { "name": "downloaded_at", "type": "TEXT", "notnull": true }
+    ],
+    "external_connections": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "username", "type": "TEXT", "notnull": true },
+      { "name": "destination_ip", "type": "TEXT", "notnull": true },
+      { "name": "connected_at", "type": "TEXT", "notnull": true },
+      { "name": "data_sent_mb", "type": "REAL", "notnull": true }
+    ],
+    "access_roles": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "role_name", "type": "TEXT", "notnull": true },
+      { "name": "can_export", "type": "INTEGER", "notnull": true }
+    ]
+  },
+  "poll": {
+    "question": "Quem realizou a exfiltração dos dados de pacientes?",
+    "options": ["Dr. Paulo Serrano", "Aline Mendes", "Dr. Vanessa Queiroz", "Robson Teles"],
+    "correct": "Robson Teles"
+  },
+  "rewardXp": 240
+}

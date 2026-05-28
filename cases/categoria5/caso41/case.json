@@ -1,0 +1,52 @@
+{
+  "id": 41,
+  "slug": "caso41-conta-clonada",
+  "title": "Caso 41 — Conta Clonada",
+  "category": {
+    "id": "categoria5",
+    "title": "Fraude de Identidade"
+  },
+  "narrative": {
+    "titulo": "Relatório de Fraude Bancária",
+    "texto": "Uma cliente do Banco Solaris ligou para reclamar de compras que não reconhece. Ao analisar o caso, a equipe de fraudes descobriu que uma segunda conta foi aberta em seu nome usando documentos falsificados.\n\nA conta fraudulenta realizou compras de alto valor em e-commerce e depois tentou um empréstimo pessoal. O IP e dispositivo dos acessos estão nos logs."
+  },
+  "objective": "Usando o banco de dados (accounts, transactions, logins, devices_fp), identifique qual conta é fraudulenta e rastreie o dispositivo usado.",
+  "initialClue": "Duas contas têm o mesmo CPF. Uma foi aberta presencialmente em 2021, a outra foi aberta online em 2026. Os IPs de login são completamente diferentes.",
+  "tables": ["accounts", "transactions", "logins", "devices_fp"],
+  "schema": {
+    "accounts": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "account_number", "type": "TEXT", "notnull": true },
+      { "name": "holder_name", "type": "TEXT", "notnull": true },
+      { "name": "cpf", "type": "TEXT", "notnull": true },
+      { "name": "open_date", "type": "TEXT", "notnull": true },
+      { "name": "open_method", "type": "TEXT", "notnull": true }
+    ],
+    "transactions": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "account_number", "type": "TEXT", "notnull": true },
+      { "name": "description", "type": "TEXT", "notnull": true },
+      { "name": "amount", "type": "REAL", "notnull": true },
+      { "name": "tx_date", "type": "TEXT", "notnull": true }
+    ],
+    "logins": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "account_number", "type": "TEXT", "notnull": true },
+      { "name": "ip_address", "type": "TEXT", "notnull": true },
+      { "name": "device_id", "type": "TEXT", "notnull": true },
+      { "name": "login_time", "type": "TEXT", "notnull": true }
+    ],
+    "devices_fp": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "device_id", "type": "TEXT", "notnull": true },
+      { "name": "known_fraud", "type": "INTEGER", "notnull": true },
+      { "name": "first_seen", "type": "TEXT", "notnull": true }
+    ]
+  },
+  "poll": {
+    "question": "Qual número de conta é a conta fraudulenta?",
+    "options": ["CC-ORIG-2021", "CC-FRAUD-2026", "CC-POUP-2023", "CC-EMP-2024"],
+    "correct": "CC-FRAUD-2026"
+  },
+  "rewardXp": 240
+}

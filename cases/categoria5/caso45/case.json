@@ -1,0 +1,52 @@
+{
+  "id": 45,
+  "slug": "caso45-sim-swap",
+  "title": "Caso 45 — Troca de Chip",
+  "category": {
+    "id": "categoria5",
+    "title": "Fraude de Identidade"
+  },
+  "narrative": {
+    "titulo": "Relatório de Segurança Telecom",
+    "texto": "Uma vítima teve o número de celular transferido para um chip de terceiros sem autorização. Com o controle do número, o fraudador interceptou tokens de autenticação e esvaziou três contas bancárias.\n\nA operadora de telefonia registra todas as solicitações de portabilidade e troca de SIM. Um atendente pode ter sido cúmplice."
+  },
+  "objective": "Usando o banco de dados (sim_swap_requests, attendants, auth_tokens, bank_events), rastreie o ataque e identifique qual atendente aprovou a troca indevida.",
+  "initialClue": "A troca de SIM foi solicitada pessoalmente em uma loja, mas a vítima estava trabalhando em outra cidade naquele dia. O CPF apresentado era o correto, mas a foto não era da titular.",
+  "tables": ["sim_swap_requests", "attendants", "auth_tokens", "bank_events"],
+  "schema": {
+    "sim_swap_requests": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "phone_number", "type": "TEXT", "notnull": true },
+      { "name": "cpf", "type": "TEXT", "notnull": true },
+      { "name": "approved_by", "type": "INTEGER", "notnull": true },
+      { "name": "request_date", "type": "TEXT", "notnull": true },
+      { "name": "store", "type": "TEXT", "notnull": true }
+    ],
+    "attendants": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "name", "type": "TEXT", "notnull": true },
+      { "name": "employee_id", "type": "TEXT", "notnull": true },
+      { "name": "store", "type": "TEXT", "notnull": true },
+      { "name": "flagged_complaints", "type": "INTEGER", "notnull": true }
+    ],
+    "auth_tokens": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "phone_number", "type": "TEXT", "notnull": true },
+      { "name": "token_type", "type": "TEXT", "notnull": true },
+      { "name": "sent_at", "type": "TEXT", "notnull": true }
+    ],
+    "bank_events": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "cpf", "type": "TEXT", "notnull": true },
+      { "name": "event_type", "type": "TEXT", "notnull": true },
+      { "name": "amount", "type": "REAL", "notnull": false },
+      { "name": "event_time", "type": "TEXT", "notnull": true }
+    ]
+  },
+  "poll": {
+    "question": "Qual atendente aprovou a troca de SIM fraudulenta?",
+    "options": ["Willian Tavares", "Jacqueline Mota", "Evandro Prado", "Simone Luz"],
+    "correct": "Evandro Prado"
+  },
+  "rewardXp": 270
+}

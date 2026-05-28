@@ -1,0 +1,50 @@
+{
+  "id": 5,
+  "slug": "caso5-assassinato-porto",
+  "title": "Caso 5 — Corpo no Porto",
+  "category": {
+    "id": "categoria1",
+    "title": "Homicídios"
+  },
+  "narrative": {
+    "titulo": "Relatório policial",
+    "texto": "Vítima: Marcos Vidal, 58 anos, inspetor de alfândega. Local: Cais 7, Porto de Santos. Horário estimado: 03:40.\n\nO inspetor estava investigando irregularidades em cargas. O manifesto de carga daquela noite foi alterado. Registros de entrada de veículos e comunicações no rádio interno podem revelar quem estava no cais."
+  },
+  "objective": "Usando o banco de dados (inspectors, cargo_manifest, vehicle_log, radio_log), descubra quem estava no Cais 7 e tinha motivo para silenciar o inspetor.",
+  "initialClue": "O manifesto do contêiner CX-4471 foi editado às 02:55, menos de uma hora antes do crime.",
+  "tables": ["inspectors", "cargo_manifest", "vehicle_log", "radio_log"],
+  "schema": {
+    "inspectors": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "name", "type": "TEXT", "notnull": true },
+      { "name": "badge", "type": "TEXT", "notnull": true },
+      { "name": "shift", "type": "TEXT", "notnull": true }
+    ],
+    "cargo_manifest": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "container_id", "type": "TEXT", "notnull": true },
+      { "name": "declared_content", "type": "TEXT", "notnull": true },
+      { "name": "operator_id", "type": "INTEGER", "notnull": true },
+      { "name": "last_edited", "type": "TEXT", "notnull": true }
+    ],
+    "vehicle_log": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "plate", "type": "TEXT", "notnull": true },
+      { "name": "dock", "type": "INTEGER", "notnull": true },
+      { "name": "entry_time", "type": "TEXT", "notnull": true },
+      { "name": "exit_time", "type": "TEXT", "notnull": false }
+    ],
+    "radio_log": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "badge", "type": "TEXT", "notnull": true },
+      { "name": "message", "type": "TEXT", "notnull": true },
+      { "name": "timestamp", "type": "TEXT", "notnull": true }
+    ]
+  },
+  "poll": {
+    "question": "Quem é o suspeito pelo assassinato de Marcos Vidal?",
+    "options": ["Nilton Barros", "Edson Quirino", "Sônia Pacheco", "Geraldo Matos"],
+    "correct": "Edson Quirino"
+  },
+  "rewardXp": 230
+}

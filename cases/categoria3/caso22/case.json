@@ -1,0 +1,51 @@
+{
+  "id": 22,
+  "slug": "caso22-fuga-fronteira",
+  "title": "Caso 22 — Fuga na Fronteira",
+  "category": {
+    "id": "categoria3",
+    "title": "Fugas"
+  },
+  "narrative": {
+    "titulo": "Relatório da Polícia Federal",
+    "texto": "Um suspeito de tráfico cruzou a fronteira Brasil-Paraguai usando documentos falsos. O cruzamento ocorreu entre 04:00 e 06:00 em um posto de segunda linha.\n\nO sistema de controle registrou todas as passagens naquele período. O veículo foi visto por câmeras, mas a placa estava coberta. A identidade usada pertencia a outra pessoa."
+  },
+  "objective": "Usando o banco de dados (crossings, documents, vehicles_log, alerts), identifique qual identidade foi usada e rastreie o suspeito.",
+  "initialClue": "O documento apresentado tinha CPF válido, mas a foto não correspondia ao titular. O cruzamento foi no posto PF-07.",
+  "tables": ["crossings", "documents", "vehicles_log", "alerts"],
+  "schema": {
+    "crossings": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "document_id", "type": "TEXT", "notnull": true },
+      { "name": "post", "type": "TEXT", "notnull": true },
+      { "name": "crossing_time", "type": "TEXT", "notnull": true },
+      { "name": "direction", "type": "TEXT", "notnull": true }
+    ],
+    "documents": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "cpf", "type": "TEXT", "notnull": true },
+      { "name": "owner_name", "type": "TEXT", "notnull": true },
+      { "name": "reported_stolen", "type": "INTEGER", "notnull": true },
+      { "name": "report_date", "type": "TEXT", "notnull": false }
+    ],
+    "vehicles_log": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "plate", "type": "TEXT", "notnull": true },
+      { "name": "post", "type": "TEXT", "notnull": true },
+      { "name": "pass_time", "type": "TEXT", "notnull": true },
+      { "name": "plate_readable", "type": "INTEGER", "notnull": true }
+    ],
+    "alerts": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "cpf", "type": "TEXT", "notnull": true },
+      { "name": "alert_type", "type": "TEXT", "notnull": true },
+      { "name": "issued_at", "type": "TEXT", "notnull": true }
+    ]
+  },
+  "poll": {
+    "question": "Qual identidade foi usada pelo fugitivo para cruzar a fronteira?",
+    "options": ["João Evangelista", "Renato Fraga", "Ciro Sampaio", "Leandro Mota"],
+    "correct": "Renato Fraga"
+  },
+  "rewardXp": 220
+}

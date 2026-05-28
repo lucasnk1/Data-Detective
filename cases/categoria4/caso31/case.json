@@ -1,0 +1,50 @@
+{
+  "id": 31,
+  "slug": "caso31-empresa-fantasma",
+  "title": "Caso 31 — Empresa Fantasma",
+  "category": {
+    "id": "categoria4",
+    "title": "Lavagem de Dinheiro"
+  },
+  "narrative": {
+    "titulo": "Relatório do COAF",
+    "texto": "O Conselho de Controle de Atividades Financeiras (COAF) sinalizou movimentações atípicas em uma empresa de eventos. Em seis meses, a empresa recebeu R$ 4,2 milhões, mas não tem funcionários registrados nem emite notas fiscais.\n\nO dinheiro entra via transferências de pessoas físicas e sai para quatro contas correntes diferentes. A estrutura clássica de uma empresa de fachada."
+  },
+  "objective": "Usando o banco de dados (companies, transfers, accounts, owners), mapeie o fluxo financeiro e identifique o beneficiário final.",
+  "initialClue": "A empresa 'Eventos Estelar Ltda' recebeu mais de R$ 800 mil em um único dia. Nenhuma nota fiscal foi emitida nesse período.",
+  "tables": ["companies", "transfers", "accounts", "owners"],
+  "schema": {
+    "companies": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "name", "type": "TEXT", "notnull": true },
+      { "name": "cnpj", "type": "TEXT", "notnull": true },
+      { "name": "sector", "type": "TEXT", "notnull": true },
+      { "name": "employees_count", "type": "INTEGER", "notnull": true }
+    ],
+    "transfers": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "origin_account", "type": "TEXT", "notnull": true },
+      { "name": "destination_account", "type": "TEXT", "notnull": true },
+      { "name": "amount", "type": "REAL", "notnull": true },
+      { "name": "transfer_date", "type": "TEXT", "notnull": true }
+    ],
+    "accounts": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "account_number", "type": "TEXT", "notnull": true },
+      { "name": "holder_type", "type": "TEXT", "notnull": true },
+      { "name": "holder_id", "type": "TEXT", "notnull": true }
+    ],
+    "owners": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "name", "type": "TEXT", "notnull": true },
+      { "name": "cpf", "type": "TEXT", "notnull": true },
+      { "name": "politically_exposed", "type": "INTEGER", "notnull": true }
+    ]
+  },
+  "poll": {
+    "question": "Quem é o beneficiário final do esquema de lavagem?",
+    "options": ["Osvaldo Cintra", "Berenice Távora", "Antônio Macedo", "Sueli Corrêa"],
+    "correct": "Osvaldo Cintra"
+  },
+  "rewardXp": 250
+}

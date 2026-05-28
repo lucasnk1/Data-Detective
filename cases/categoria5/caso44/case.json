@@ -1,0 +1,50 @@
+{
+  "id": 44,
+  "slug": "caso44-deepfake-abertura-conta",
+  "title": "Caso 44 — Rosto Falso",
+  "category": {
+    "id": "categoria5",
+    "title": "Fraude de Identidade"
+  },
+  "narrative": {
+    "titulo": "Relatório de Onboarding Digital",
+    "texto": "Um banco digital identificou que contas foram abertas usando deepfakes no processo de validação facial. O sistema de liveness detection foi enganado em três ocorrências.\n\nEm todos os casos, o dispositivo usado era o mesmo. Os metadados dos vídeos enviados na validação mostram inconsistências técnicas."
+  },
+  "objective": "Usando o banco de dados (onboarding_sessions, video_metadata, fraud_signals, opened_accounts), identifique quais contas foram abertas com deepfake e qual dispositivo foi usado.",
+  "initialClue": "Vídeos de validação legítimos têm variação de brilho facial natural. Os vídeos suspeitos têm variação_brilho abaixo de 2.0, indicando renderização sintética.",
+  "tables": ["onboarding_sessions", "video_metadata", "fraud_signals", "opened_accounts"],
+  "schema": {
+    "onboarding_sessions": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "session_id", "type": "TEXT", "notnull": true },
+      { "name": "device_id", "type": "TEXT", "notnull": true },
+      { "name": "cpf_informed", "type": "TEXT", "notnull": true },
+      { "name": "started_at", "type": "TEXT", "notnull": true }
+    ],
+    "video_metadata": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "session_id", "type": "TEXT", "notnull": true },
+      { "name": "brightness_variation", "type": "REAL", "notnull": true },
+      { "name": "blink_count", "type": "INTEGER", "notnull": true },
+      { "name": "head_movement", "type": "INTEGER", "notnull": true }
+    ],
+    "fraud_signals": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "session_id", "type": "TEXT", "notnull": true },
+      { "name": "signal_type", "type": "TEXT", "notnull": true },
+      { "name": "detected_at", "type": "TEXT", "notnull": true }
+    ],
+    "opened_accounts": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "session_id", "type": "TEXT", "notnull": true },
+      { "name": "account_number", "type": "TEXT", "notnull": true },
+      { "name": "holder_cpf", "type": "TEXT", "notnull": true }
+    ]
+  },
+  "poll": {
+    "question": "Qual conta foi aberta usando deepfake?",
+    "options": ["CC-DIG-0091", "CC-DIG-0092", "CC-DIG-0093", "CC-DIG-0094"],
+    "correct": "CC-DIG-0093"
+  },
+  "rewardXp": 260
+}

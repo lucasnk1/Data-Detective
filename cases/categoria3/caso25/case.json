@@ -1,0 +1,52 @@
+{
+  "id": 25,
+  "slug": "caso25-fuga-carro-roubado",
+  "title": "Caso 25 — Queimada de Placa",
+  "category": {
+    "id": "categoria3",
+    "title": "Fugas"
+  },
+  "narrative": {
+    "titulo": "Relatório da Delegacia de Trânsito",
+    "texto": "Após um assalto a banco em Campinas, dois suspeitos fugiram em um carro roubado. O veículo passou por três radares antes de desaparecer.\n\nO proprietário original do carro registrou o roubo duas horas antes do assalto. A placa foi clonada de outro veículo. Câmeras de posto capturaram parte da fuga."
+  },
+  "objective": "Usando o banco de dados (radar_log, stolen_vehicles, cloned_plates, gas_station_cams), rastreie a rota de fuga e identifique o veículo real.",
+  "initialClue": "O radar R-14 na Rodovia Dom Pedro I registrou a placa MNO-3322 às 16:08. Essa placa pertence a um veículo diferente do registrado no radar.",
+  "tables": ["radar_log", "stolen_vehicles", "cloned_plates", "gas_station_cams"],
+  "schema": {
+    "radar_log": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "radar_id", "type": "TEXT", "notnull": true },
+      { "name": "plate", "type": "TEXT", "notnull": true },
+      { "name": "speed_kmh", "type": "INTEGER", "notnull": true },
+      { "name": "captured_at", "type": "TEXT", "notnull": true }
+    ],
+    "stolen_vehicles": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "plate", "type": "TEXT", "notnull": true },
+      { "name": "model", "type": "TEXT", "notnull": true },
+      { "name": "color", "type": "TEXT", "notnull": true },
+      { "name": "reported_at", "type": "TEXT", "notnull": true },
+      { "name": "owner_name", "type": "TEXT", "notnull": true }
+    ],
+    "cloned_plates": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "plate", "type": "TEXT", "notnull": true },
+      { "name": "legitimate_model", "type": "TEXT", "notnull": true },
+      { "name": "fraud_detected_at", "type": "TEXT", "notnull": true }
+    ],
+    "gas_station_cams": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "station_name", "type": "TEXT", "notnull": true },
+      { "name": "plate", "type": "TEXT", "notnull": true },
+      { "name": "model_observed", "type": "TEXT", "notnull": true },
+      { "name": "observed_at", "type": "TEXT", "notnull": true }
+    ]
+  },
+  "poll": {
+    "question": "Qual é a placa real do veículo usado na fuga?",
+    "options": ["MNO-3322", "QPR-7810", "LKJ-4490", "ZXW-0055"],
+    "correct": "LKJ-4490"
+  },
+  "rewardXp": 230
+}

@@ -1,0 +1,50 @@
+{
+  "id": 4,
+  "slug": "caso4-assassinato-escritorio",
+  "title": "Caso 4 — Silêncio no Escritório",
+  "category": {
+    "id": "categoria1",
+    "title": "Homicídios"
+  },
+  "narrative": {
+    "titulo": "Relatório policial",
+    "texto": "Vítima: Adriana Campos, 44 anos, diretora financeira. Local: Escritório da Nexum Consultoria, 12º andar, São Paulo. Horário estimado: 20:30.\n\nO prédio esvaziou após as 19:00. Câmeras registraram entradas no elevador. O e-mail corporativo da vítima sugere um conflito interno nos dias anteriores."
+  },
+  "objective": "Usando o banco de dados (employees, building_access, emails, departments), descubra qual funcionário tinha motivo e estava presente no horário.",
+  "initialClue": "Um e-mail ameaçador foi enviado à vítima dois dias antes. O remetente usou um endereço corporativo.",
+  "tables": ["employees", "building_access", "emails", "departments"],
+  "schema": {
+    "employees": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "name", "type": "TEXT", "notnull": true },
+      { "name": "email", "type": "TEXT", "notnull": true },
+      { "name": "department_id", "type": "INTEGER", "notnull": true },
+      { "name": "role", "type": "TEXT", "notnull": true }
+    ],
+    "building_access": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "employee_id", "type": "INTEGER", "notnull": true },
+      { "name": "floor", "type": "INTEGER", "notnull": true },
+      { "name": "access_time", "type": "TEXT", "notnull": true },
+      { "name": "direction", "type": "TEXT", "notnull": true }
+    ],
+    "emails": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "sender_email", "type": "TEXT", "notnull": true },
+      { "name": "recipient_email", "type": "TEXT", "notnull": true },
+      { "name": "sent_at", "type": "TEXT", "notnull": true },
+      { "name": "subject", "type": "TEXT", "notnull": true }
+    ],
+    "departments": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "name", "type": "TEXT", "notnull": true },
+      { "name": "floor", "type": "INTEGER", "notnull": true }
+    ]
+  },
+  "poll": {
+    "question": "Quem é o suspeito pelo assassinato de Adriana Campos?",
+    "options": ["Henrique Sá", "Priscila Dumont", "Roberto Fonseca", "Tatiane Luz"],
+    "correct": "Roberto Fonseca"
+  },
+  "rewardXp": 220
+}

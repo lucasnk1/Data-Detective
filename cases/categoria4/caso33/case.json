@@ -1,0 +1,50 @@
+{
+  "id": 33,
+  "slug": "caso33-imobiliaria-lavagem",
+  "title": "Caso 33 — Tijolo Sujo",
+  "category": {
+    "id": "categoria4",
+    "title": "Lavagem de Dinheiro"
+  },
+  "narrative": {
+    "titulo": "Relatório da Receita Federal",
+    "texto": "Uma imobiliária em Florianópolis vendeu três imóveis de alto padrão em menos de 90 dias. Todos foram pagos integralmente em espécie, sem financiamento.\n\nOs compradores declararam renda incompatível com os valores pagos. A imobiliária não reportou as transações ao COAF conforme exigido por lei."
+  },
+  "objective": "Usando o banco de dados (properties, sales, buyers, income_reports), identifique qual comprador tem a maior incompatibilidade entre renda declarada e valor pago.",
+  "initialClue": "O imóvel de maior valor foi comprado à vista por alguém com renda declarada de R$ 3.200 mensais.",
+  "tables": ["properties", "sales", "buyers", "income_reports"],
+  "schema": {
+    "properties": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "address", "type": "TEXT", "notnull": true },
+      { "name": "type", "type": "TEXT", "notnull": true },
+      { "name": "market_value", "type": "REAL", "notnull": true }
+    ],
+    "sales": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "property_id", "type": "INTEGER", "notnull": true },
+      { "name": "buyer_id", "type": "INTEGER", "notnull": true },
+      { "name": "sale_price", "type": "REAL", "notnull": true },
+      { "name": "payment_method", "type": "TEXT", "notnull": true },
+      { "name": "sale_date", "type": "TEXT", "notnull": true }
+    ],
+    "buyers": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "name", "type": "TEXT", "notnull": true },
+      { "name": "cpf", "type": "TEXT", "notnull": true },
+      { "name": "occupation", "type": "TEXT", "notnull": true }
+    ],
+    "income_reports": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "buyer_id", "type": "INTEGER", "notnull": true },
+      { "name": "declared_monthly_income", "type": "REAL", "notnull": true },
+      { "name": "report_year", "type": "INTEGER", "notnull": true }
+    ]
+  },
+  "poll": {
+    "question": "Qual comprador apresenta maior incompatibilidade financeira?",
+    "options": ["Luciana Saraiva", "Gilberto Meireles", "Débora Furtado", "Samuel Braga"],
+    "correct": "Gilberto Meireles"
+  },
+  "rewardXp": 240
+}

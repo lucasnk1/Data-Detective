@@ -1,0 +1,49 @@
+{
+  "id": 3,
+  "slug": "caso3-assassinato-academia",
+  "title": "Caso 3 — Queda na Academia",
+  "category": {
+    "id": "categoria1",
+    "title": "Homicídios"
+  },
+  "narrative": {
+    "titulo": "Relatório policial",
+    "texto": "Vítima: Gustavo Ferraz, 29 anos, personal trainer. Local: Academia FitPro, Vila Madalena, São Paulo. Horário estimado: 06:15.\n\nA vítima foi encontrada inconsciente no vestiário, com trauma craniano. A academia abre às 06:00 e havia poucas pessoas no local. O sistema de acesso e as fichas de treino contêm pistas."
+  },
+  "objective": "Usando o banco de dados (members, access_log, workout_sessions, lockers), descubra quem estava no vestiário no horário do crime.",
+  "initialClue": "Um armário foi forçado próximo ao corpo. O número do armário está registrado nos dados de sessão.",
+  "tables": ["members", "access_log", "workout_sessions", "lockers"],
+  "schema": {
+    "members": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "name", "type": "TEXT", "notnull": true },
+      { "name": "plan", "type": "TEXT", "notnull": true },
+      { "name": "join_date", "type": "TEXT", "notnull": true }
+    ],
+    "access_log": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "member_id", "type": "INTEGER", "notnull": true },
+      { "name": "entry_time", "type": "TEXT", "notnull": true },
+      { "name": "exit_time", "type": "TEXT", "notnull": false }
+    ],
+    "workout_sessions": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "member_id", "type": "INTEGER", "notnull": true },
+      { "name": "date", "type": "TEXT", "notnull": true },
+      { "name": "locker_number", "type": "INTEGER", "notnull": true },
+      { "name": "personal_id", "type": "INTEGER", "notnull": false }
+    ],
+    "lockers": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "number", "type": "INTEGER", "notnull": true },
+      { "name": "status", "type": "TEXT", "notnull": true },
+      { "name": "last_used_by", "type": "INTEGER", "notnull": false }
+    ]
+  },
+  "poll": {
+    "question": "Quem é o suspeito pelo ataque a Gustavo Ferraz?",
+    "options": ["Leonardo Carvalho", "Bianca Torres", "Rafael Moura", "Camila Dias"],
+    "correct": "Leonardo Carvalho"
+  },
+  "rewardXp": 210
+}

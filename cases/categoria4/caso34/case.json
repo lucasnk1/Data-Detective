@@ -1,0 +1,50 @@
+{
+  "id": 34,
+  "slug": "caso34-criptomoeda-lavagem",
+  "title": "Caso 34 — Lavagem Digital",
+  "category": {
+    "id": "categoria4",
+    "title": "Lavagem de Dinheiro"
+  },
+  "narrative": {
+    "titulo": "Relatório de Análise de Blockchain",
+    "texto": "Uma exchange de criptomoedas cooperou com a Polícia Federal após identificar movimentações suspeitas. Um usuário converteu R$ 2,1 milhões em criptomoedas em pequenas parcelas e depois sacou em contas diferentes.\n\nO padrão de transações sugere que o objetivo era dissociar a origem do dinheiro. Os dados da exchange foram fornecidos com autorização judicial."
+  },
+  "objective": "Usando o banco de dados (crypto_users, crypto_transactions, withdrawals, flagged_wallets), rastreie o fluxo e identifique o usuário central do esquema.",
+  "initialClue": "A carteira W-0055 enviou fundos para pelo menos 5 carteiras diferentes em menos de 24 horas. Esse padrão é conhecido como layering.",
+  "tables": ["crypto_users", "crypto_transactions", "withdrawals", "flagged_wallets"],
+  "schema": {
+    "crypto_users": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "name", "type": "TEXT", "notnull": true },
+      { "name": "cpf", "type": "TEXT", "notnull": true },
+      { "name": "wallet_id", "type": "TEXT", "notnull": true }
+    ],
+    "crypto_transactions": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "from_wallet", "type": "TEXT", "notnull": true },
+      { "name": "to_wallet", "type": "TEXT", "notnull": true },
+      { "name": "amount_brl", "type": "REAL", "notnull": true },
+      { "name": "tx_time", "type": "TEXT", "notnull": true }
+    ],
+    "withdrawals": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "wallet_id", "type": "TEXT", "notnull": true },
+      { "name": "bank_account", "type": "TEXT", "notnull": true },
+      { "name": "amount_brl", "type": "REAL", "notnull": true },
+      { "name": "withdrawal_date", "type": "TEXT", "notnull": true }
+    ],
+    "flagged_wallets": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "wallet_id", "type": "TEXT", "notnull": true },
+      { "name": "reason", "type": "TEXT", "notnull": true },
+      { "name": "flagged_at", "type": "TEXT", "notnull": true }
+    ]
+  },
+  "poll": {
+    "question": "Quem controla a carteira central do esquema de layering?",
+    "options": ["Ítalo Brandão", "Mariana Siqueira", "Dênis Rocha", "Fernanda Ávila"],
+    "correct": "Ítalo Brandão"
+  },
+  "rewardXp": 260
+}

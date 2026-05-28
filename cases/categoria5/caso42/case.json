@@ -1,0 +1,49 @@
+{
+  "id": 42,
+  "slug": "caso42-emprestimo-fraudulento",
+  "title": "Caso 42 — Nome Emprestado",
+  "category": {
+    "id": "categoria5",
+    "title": "Fraude de Identidade"
+  },
+  "narrative": {
+    "titulo": "Relatório de Crédito",
+    "texto": "Uma fintech de crédito pessoal identificou que vários empréstimos foram solicitados usando dados de pessoas reais, mas os solicitantes não eram quem diziam ser.\n\nOs solicitantes passaram por validação de documentos, mas a análise comportamental apontou inconsistências: localização geográfica divergente, horários de acesso atípicos e sequência de ações fora do padrão."
+  },
+  "objective": "Usando o banco de dados (loan_applications, applicants, geo_checks, behavior_scores), identifique quais solicitações são fraudulentas.",
+  "initialClue": "Uma solicitação de empréstimo foi feita em nome de alguém que mora no Rio de Janeiro, mas o IP era de Manaus e o horário de acesso foi às 3h da manhã.",
+  "tables": ["loan_applications", "applicants", "geo_checks", "behavior_scores"],
+  "schema": {
+    "loan_applications": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "applicant_id", "type": "INTEGER", "notnull": true },
+      { "name": "amount_requested", "type": "REAL", "notnull": true },
+      { "name": "applied_at", "type": "TEXT", "notnull": true },
+      { "name": "status", "type": "TEXT", "notnull": true }
+    ],
+    "applicants": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "name", "type": "TEXT", "notnull": true },
+      { "name": "cpf", "type": "TEXT", "notnull": true },
+      { "name": "registered_city", "type": "TEXT", "notnull": true }
+    ],
+    "geo_checks": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "application_id", "type": "INTEGER", "notnull": true },
+      { "name": "ip_city", "type": "TEXT", "notnull": true },
+      { "name": "ip_address", "type": "TEXT", "notnull": true }
+    ],
+    "behavior_scores": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "application_id", "type": "INTEGER", "notnull": true },
+      { "name": "score", "type": "INTEGER", "notnull": true },
+      { "name": "flags", "type": "TEXT", "notnull": false }
+    ]
+  },
+  "poll": {
+    "question": "Qual solicitação de empréstimo é claramente fraudulenta?",
+    "options": ["Solicitação de Adriano Pires", "Solicitação de Monica Teles", "Solicitação de Jesuíno Braga", "Solicitação de Lara Nogueira"],
+    "correct": "Solicitação de Monica Teles"
+  },
+  "rewardXp": 240
+}

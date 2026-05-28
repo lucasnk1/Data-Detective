@@ -1,0 +1,50 @@
+{
+  "id": 19,
+  "slug": "caso19-clonagem-cartao",
+  "title": "Caso 19 — Clonagem em Série",
+  "category": {
+    "id": "categoria2",
+    "title": "Crimes Cibernéticos"
+  },
+  "narrative": {
+    "titulo": "Relatório de Fraude Bancária",
+    "texto": "O Banco Meridian identificou uma sequência de compras fraudulentas em cartões de clientes diferentes. Todas as compras ocorreram em datas próximas e nos mesmos estabelecimentos.\n\nA análise aponta que os dados foram capturados em um terminal comprometido. O técnico responsável pela manutenção dos terminais naquele período pode ser o responsável."
+  },
+  "objective": "Usando o banco de dados (terminals, maintenance_log, fraudulent_transactions, technicians), descubra qual terminal foi comprometido e quem o manipulou.",
+  "initialClue": "Todas as transações fraudulentas envolvem cartões usados no terminal TRM-0088 nos últimos 15 dias.",
+  "tables": ["terminals", "maintenance_log", "fraudulent_transactions", "technicians"],
+  "schema": {
+    "terminals": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "terminal_id", "type": "TEXT", "notnull": true },
+      { "name": "location", "type": "TEXT", "notnull": true },
+      { "name": "status", "type": "TEXT", "notnull": true }
+    ],
+    "maintenance_log": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "terminal_id", "type": "TEXT", "notnull": true },
+      { "name": "technician_id", "type": "INTEGER", "notnull": true },
+      { "name": "service_date", "type": "TEXT", "notnull": true },
+      { "name": "notes", "type": "TEXT", "notnull": false }
+    ],
+    "fraudulent_transactions": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "card_last4", "type": "TEXT", "notnull": true },
+      { "name": "terminal_id", "type": "TEXT", "notnull": true },
+      { "name": "amount", "type": "REAL", "notnull": true },
+      { "name": "transaction_date", "type": "TEXT", "notnull": true }
+    ],
+    "technicians": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "name", "type": "TEXT", "notnull": true },
+      { "name": "region", "type": "TEXT", "notnull": true },
+      { "name": "certified", "type": "INTEGER", "notnull": true }
+    ]
+  },
+  "poll": {
+    "question": "Qual técnico instalou o skimmer no terminal?",
+    "options": ["Humberto Gomes", "Silvana Reis", "Fausto Bandeira", "Cristina Lago"],
+    "correct": "Fausto Bandeira"
+  },
+  "rewardXp": 240
+}

@@ -1,0 +1,50 @@
+{
+  "id": 43,
+  "slug": "caso43-beneficio-indevido",
+  "title": "Caso 43 — Benefício Indevido",
+  "category": {
+    "id": "categoria5",
+    "title": "Fraude de Identidade"
+  },
+  "narrative": {
+    "titulo": "Relatório da Previdência Social",
+    "texto": "O sistema de benefícios previdenciários identificou pagamentos continuados para titulares que constam como falecidos nos registros do Cartório Nacional. Alguém está recebendo os benefícios em nome de mortos.\n\nO esquema envolve um agente que tem acesso ao sistema e bloqueou a atualização do cadastro de óbitos em determinados CPFs."
+  },
+  "objective": "Usando o banco de dados (beneficiaries, payments, death_registry, agents), descubra quais beneficiários são falecidos e qual agente manipulou os registros.",
+  "initialClue": "Três CPFs na base de benefícios constam como falecidos no cartório, mas continuam recebendo pagamentos mensais. Um agente alterou o status desses registros.",
+  "tables": ["beneficiaries", "payments", "death_registry", "agents"],
+  "schema": {
+    "beneficiaries": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "name", "type": "TEXT", "notnull": true },
+      { "name": "cpf", "type": "TEXT", "notnull": true },
+      { "name": "status", "type": "TEXT", "notnull": true },
+      { "name": "last_updated_by", "type": "INTEGER", "notnull": false }
+    ],
+    "payments": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "cpf", "type": "TEXT", "notnull": true },
+      { "name": "amount", "type": "REAL", "notnull": true },
+      { "name": "payment_date", "type": "TEXT", "notnull": true },
+      { "name": "bank_account", "type": "TEXT", "notnull": true }
+    ],
+    "death_registry": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "cpf", "type": "TEXT", "notnull": true },
+      { "name": "death_date", "type": "TEXT", "notnull": true },
+      { "name": "registry_office", "type": "TEXT", "notnull": true }
+    ],
+    "agents": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "name", "type": "TEXT", "notnull": true },
+      { "name": "employee_id", "type": "TEXT", "notnull": true },
+      { "name": "access_level", "type": "TEXT", "notnull": true }
+    ]
+  },
+  "poll": {
+    "question": "Qual agente manipulou os registros para manter os pagamentos indevidos?",
+    "options": ["Aparecida Santos", "Nelson Quirino", "Graça Tavares", "Márcio Daltro"],
+    "correct": "Nelson Quirino"
+  },
+  "rewardXp": 250
+}

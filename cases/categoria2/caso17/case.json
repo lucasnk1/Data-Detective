@@ -1,0 +1,49 @@
+{
+  "id": 17,
+  "slug": "caso17-ransomware-hospital",
+  "title": "Caso 17 — Ransomware no Hospital",
+  "category": {
+    "id": "categoria2",
+    "title": "Crimes Cibernéticos"
+  },
+  "narrative": {
+    "titulo": "Relatório de Incidente",
+    "texto": "O Hospital Santa Cruz sofreu um ataque de ransomware que criptografou registros de pacientes. O ataque ocorreu às 03:10 de uma terça-feira.\n\nA análise forense indica que o malware foi instalado via acesso remoto. Um funcionário de TI com acesso privilegiado conectou-se ao servidor fora do horário normal."
+  },
+  "objective": "Usando o banco de dados (it_staff, server_access, alerts, schedules), identifique qual membro da TI realizou o acesso não autorizado.",
+  "initialClue": "O servidor de backups foi acessado às 03:10. Apenas contas com perfil 'admin' têm permissão nesse servidor.",
+  "tables": ["it_staff", "server_access", "alerts", "schedules"],
+  "schema": {
+    "it_staff": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "name", "type": "TEXT", "notnull": true },
+      { "name": "username", "type": "TEXT", "notnull": true },
+      { "name": "profile", "type": "TEXT", "notnull": true }
+    ],
+    "server_access": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "username", "type": "TEXT", "notnull": true },
+      { "name": "server", "type": "TEXT", "notnull": true },
+      { "name": "access_time", "type": "TEXT", "notnull": true },
+      { "name": "action", "type": "TEXT", "notnull": true }
+    ],
+    "alerts": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "triggered_by", "type": "TEXT", "notnull": true },
+      { "name": "alert_type", "type": "TEXT", "notnull": true },
+      { "name": "triggered_at", "type": "TEXT", "notnull": true }
+    ],
+    "schedules": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "staff_id", "type": "INTEGER", "notnull": true },
+      { "name": "work_date", "type": "TEXT", "notnull": true },
+      { "name": "shift", "type": "TEXT", "notnull": true }
+    ]
+  },
+  "poll": {
+    "question": "Qual membro da TI realizou o acesso não autorizado?",
+    "options": ["Augusto Leite", "Fernanda Cruz", "Marcelo Viana", "Patrícia Saes"],
+    "correct": "Marcelo Viana"
+  },
+  "rewardXp": 230
+}

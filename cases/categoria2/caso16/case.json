@@ -1,0 +1,51 @@
+{
+  "id": 16,
+  "slug": "caso16-phishing-corporativo",
+  "title": "Caso 16 — Phishing Corporativo",
+  "category": {
+    "id": "categoria2",
+    "title": "Crimes Cibernéticos"
+  },
+  "narrative": {
+    "titulo": "Relatório de Segurança",
+    "texto": "A empresa Vetora Logística registrou um acesso não autorizado ao sistema de RH. Um funcionário clicou em um link malicioso e suas credenciais foram capturadas.\n\nO ataque partiu de dentro da rede corporativa. Logs de e-mail e de acesso à VPN indicam que alguém orquestrou o ataque a partir de um dispositivo interno."
+  },
+  "objective": "Usando o banco de dados (employees, email_log, vpn_sessions, devices), identifique quem enviou o e-mail de phishing e qual dispositivo foi usado.",
+  "initialClue": "O e-mail malicioso foi enviado de um endereço interno às 11:47. O domínio era legítimo, mas o remetente real pode ser rastreado pelo device_id.",
+  "tables": ["employees", "email_log", "vpn_sessions", "devices"],
+  "schema": {
+    "employees": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "name", "type": "TEXT", "notnull": true },
+      { "name": "email", "type": "TEXT", "notnull": true },
+      { "name": "department", "type": "TEXT", "notnull": true }
+    ],
+    "email_log": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "sender_email", "type": "TEXT", "notnull": true },
+      { "name": "recipient_email", "type": "TEXT", "notnull": true },
+      { "name": "sent_at", "type": "TEXT", "notnull": true },
+      { "name": "device_id", "type": "TEXT", "notnull": true },
+      { "name": "has_link", "type": "INTEGER", "notnull": true }
+    ],
+    "vpn_sessions": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "employee_id", "type": "INTEGER", "notnull": true },
+      { "name": "device_id", "type": "TEXT", "notnull": true },
+      { "name": "start_time", "type": "TEXT", "notnull": true },
+      { "name": "end_time", "type": "TEXT", "notnull": false }
+    ],
+    "devices": [
+      { "name": "id", "type": "INTEGER", "notnull": true, "pk": true },
+      { "name": "device_id", "type": "TEXT", "notnull": true },
+      { "name": "owner_id", "type": "INTEGER", "notnull": true },
+      { "name": "type", "type": "TEXT", "notnull": true }
+    ]
+  },
+  "poll": {
+    "question": "Quem orquestrou o ataque de phishing?",
+    "options": ["Viviane Nobre", "Thiago Brant", "Cecília Alves", "Rodrigo Penna"],
+    "correct": "Thiago Brant"
+  },
+  "rewardXp": 220
+}
