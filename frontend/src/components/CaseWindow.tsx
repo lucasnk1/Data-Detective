@@ -5,6 +5,7 @@ import { ResultsTable } from "./ResultsTable";
 import { SchemaViewer } from "./SchemaViewer";
 import { ModelViewer } from "./ModelViewer";
 import { api } from "@/lib/api";
+import { mergeCaseSchema } from "@/lib/schemaUtils";
 
 export function CaseWindow({
   open,
@@ -42,12 +43,17 @@ export function CaseWindow({
 
   React.useEffect(() => {
     if (!open) return;
-    api.getCase(token, caseId).then((r) => {
-      if (r.ok) setCaseData(r.case);
-    });
-    api.schema(token, caseId).then((r) => {
-      if (r.ok) setSchema(r.schema);
-    });
+    Promise.all([api.getCase(token, caseId), api.schema(token, caseId)]).then(
+      ([caseRes, schemaRes]) => {
+        const caseInfo = caseRes.ok ? caseRes.case : null;
+        if (caseRes.ok) setCaseData(caseInfo);
+        if (schemaRes.ok) {
+          setSchema(
+            mergeCaseSchema(schemaRes.schema, caseInfo?.schema, caseInfo?.tables)
+          );
+        }
+      }
+    );
   }, [open, token, caseId]);
 
   async function run() {

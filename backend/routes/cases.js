@@ -1,5 +1,6 @@
 const express = require("express");
-const { getDb } = require("../database/db");
+const { getCaseDb } = require("../database/db");
+const { mergeSchema } = require("../database/caseSeed");
 const { getSession } = require("../auth/sessionStore");
 const { cases, categories } = require("../game/casesData");
 const { getProgress } = require("../game/progressStore");
@@ -85,8 +86,10 @@ router.get("/:id/schema", (req, res) => {
   const id = Number(req.params.id);
   const c = cases.find((x) => x.id === id);
   if (!c) return res.status(404).json({ ok: false, error: "Caso não encontrado." });
-  const db = getDb(id);
-  res.json({ ok: true, schema: getSchema(db, c.tables) });
+  const db = getCaseDb(id);
+  const fromDb = getSchema(db, c.tables);
+  const schema = mergeSchema(c.schema, fromDb, c.tables);
+  res.json({ ok: true, schema });
 });
 
 router.post("/:id/query", (req, res) => {
@@ -103,7 +106,7 @@ router.post("/:id/query", (req, res) => {
     });
   }
 
-  const db = getDb(caseId);
+  const db = getCaseDb(caseId);
   try {
     const stmt = db.prepare(String(sql));
     const rows = stmt.all();
