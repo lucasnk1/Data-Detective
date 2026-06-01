@@ -85,7 +85,7 @@ router.get("/:id/schema", (req, res) => {
   const id = Number(req.params.id);
   const c = cases.find((x) => x.id === id);
   if (!c) return res.status(404).json({ ok: false, error: "Caso não encontrado." });
-  const db = getDb();
+  const db = getDb(id);
   res.json({ ok: true, schema: getSchema(db, c.tables) });
 });
 
@@ -103,7 +103,7 @@ router.post("/:id/query", (req, res) => {
     });
   }
 
-  const db = getDb();
+  const db = getDb(caseId);
   try {
     const stmt = db.prepare(String(sql));
     const rows = stmt.all();

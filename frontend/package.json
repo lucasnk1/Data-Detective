@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "npm run prepare-sql-wasm && next build",
+    "build": "npm run generate-cases-data && npm run prepare-sql-wasm && next build",
+    "generate-cases-data": "node scripts/generate-cases-data.mjs",
     "start": "next start",
     "lint": "eslint",
     "prepare-sql-wasm": "node scripts/copy-sql-wasm.mjs"
