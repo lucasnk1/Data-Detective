@@ -1,6 +1,7 @@
 const path = require("path");
 const fs = require("fs");
 const Database = require("better-sqlite3");
+const { resolveCasesDir } = require("../lib/paths");
 
 const DB_DIR = __dirname;
 
@@ -40,7 +41,8 @@ function initDb() {
   `);
 
   // 2. Inicializa dinamicamente o banco de dados individual de cada caso
-  const casesDir = path.join(__dirname, "..", "..", "cases");
+  const casesDir = resolveCasesDir();
+  console.log(`[Database] casesDir=${casesDir} exists=${fs.existsSync(casesDir)}`);
   if (fs.existsSync(casesDir)) {
     const categories = fs.readdirSync(casesDir).filter(name => name.startsWith("categoria"));
     for (const cat of categories) {

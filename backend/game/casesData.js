@@ -1,7 +1,8 @@
 const fs = require("fs");
 const path = require("path");
+const { resolveCasesDir } = require("../lib/paths");
 
-const CASES_DIR = path.join(__dirname, "..", "..", "cases");
+const CASES_DIR = resolveCasesDir();
 const CATEGORY_ORDER = ["categoria1", "categoria2", "categoria3", "categoria4", "categoria5"];
 const CATEGORY_TITLES = {
   categoria1: "Homicídios",
