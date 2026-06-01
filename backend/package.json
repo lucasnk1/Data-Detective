@@ -2,9 +2,13 @@
   "name": "backend",
   "version": "1.0.0",
   "main": "index.js",
+  "engines": {
+    "node": ">=22.12.0 <23"
+  },
   "scripts": {
     "dev": "node scripts/sync-cases.cjs && nodemon index.js",
     "prestart": "node scripts/sync-cases.cjs",
+    "postinstall": "npm rebuild better-sqlite3",
     "start": "node index.js",
     "test": "echo \"Sem testes por enquanto\" && exit 0"
   },

@@ -3,7 +3,7 @@ services:
     name: data-detective-api
     runtime: node
     rootDir: backend
-    buildCommand: npm install && node scripts/sync-cases.cjs
+    buildCommand: rm -rf node_modules && npm ci && node scripts/sync-cases.cjs
     startCommand: npm start
     envVars:
       - key: NODE_VERSION
