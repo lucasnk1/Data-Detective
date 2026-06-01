@@ -55,7 +55,11 @@ function seedCaseDatabase(caseDb, sqlFile) {
 
 function ensureCaseDatabase(caseDb, caseId) {
   const entry = loadCaseRegistry().get(caseId);
-  if (!entry) return;
+  if (!entry) {
+    throw new Error(
+      `Caso ${caseId}: dados não encontrados. Verifique a pasta cases no servidor.`
+    );
+  }
 
   const expected = entry.meta.tables || [];
   if (!expected.length) return;
@@ -74,7 +78,19 @@ function ensureCaseDatabase(caseDb, caseId) {
     console.log(`[Database] Inicializando caso ${caseId}: ${entry.meta.title || caseId}`);
   }
 
-  seedCaseDatabase(caseDb, entry.sqlFile);
+  try {
+    seedCaseDatabase(caseDb, entry.sqlFile);
+  } catch (err) {
+    console.error(`[Database] Falha ao executar SQL do caso ${caseId}:`, err.message);
+    throw err;
+  }
+
+  const stillMissing = expected.filter((t) => !getTableNames(caseDb).includes(t));
+  if (stillMissing.length) {
+    throw new Error(
+      `Caso ${caseId}: após seed ainda faltam tabelas: ${stillMissing.join(", ")}`
+    );
+  }
 }
 
 function initAllCaseDatabases(getDb) {

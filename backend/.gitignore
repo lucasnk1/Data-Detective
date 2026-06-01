@@ -1,4 +1,5 @@
 node_modules/
+cases/
 database/*.db
 database/*.db-shm
 database/*.db-wal

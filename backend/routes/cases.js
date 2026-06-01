@@ -1,6 +1,7 @@
 const express = require("express");
 const { getCaseDb } = require("../database/db");
 const { mergeSchema } = require("../database/caseSeed");
+const { validateSqlTables } = require("../database/sqlGuard");
 const { getSession } = require("../auth/sessionStore");
 const { cases, categories } = require("../game/casesData");
 const { getProgress } = require("../game/progressStore");
@@ -104,6 +105,11 @@ router.post("/:id/query", (req, res) => {
       error:
         "Query inválida. Neste jogo, por segurança, só aceitamos SELECT (ou WITH) sem ponto e vírgula."
     });
+  }
+
+  const tableCheck = validateSqlTables(sql, c.tables);
+  if (!tableCheck.ok) {
+    return res.status(400).json({ ok: false, error: tableCheck.error });
   }
 
   const db = getCaseDb(caseId);

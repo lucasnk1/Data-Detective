@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: data-detective-api
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install && node scripts/sync-cases.cjs
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 22.12.0

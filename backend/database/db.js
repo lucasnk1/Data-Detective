@@ -31,8 +31,24 @@ function getCaseDb(caseId) {
   return caseDb;
 }
 
+function removeLegacyDatabases() {
+  const legacyNames = ["data_detective.db", "data_detective.db-shm", "data_detective.db-wal"];
+  for (const name of legacyNames) {
+    const filePath = path.join(DB_DIR, name);
+    if (fs.existsSync(filePath)) {
+      try {
+        fs.unlinkSync(filePath);
+        console.log(`[Database] Removido banco legado: ${name}`);
+      } catch (err) {
+        console.warn(`[Database] Não foi possível remover ${name}:`, err.message);
+      }
+    }
+  }
+}
+
 function initDb() {
   if (!fs.existsSync(DB_DIR)) fs.mkdirSync(DB_DIR, { recursive: true });
+  removeLegacyDatabases();
 
   const sharedDb = getDb();
   sharedDb.pragma("journal_mode = WAL");
@@ -46,7 +62,13 @@ function initDb() {
   `);
 
   const casesDir = resolveCasesDir();
-  console.log(`[Database] casesDir=${casesDir} exists=${fs.existsSync(casesDir)}`);
+  const casesDirExists = fs.existsSync(casesDir);
+  console.log(`[Database] casesDir=${casesDir} exists=${casesDirExists}`);
+  if (!casesDirExists) {
+    throw new Error(
+      `[Database] Pasta cases não encontrada em ${casesDir}. Rode: node scripts/sync-cases.mjs`
+    );
+  }
   initAllCaseDatabases(getDb);
 }
 

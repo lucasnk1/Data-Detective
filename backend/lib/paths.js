@@ -8,9 +8,10 @@ function resolveCasesDir() {
   }
 
   const candidates = [
+    path.join(__dirname, "..", "cases"),
     path.join(__dirname, "..", "..", "cases"),
-    path.join(process.cwd(), "..", "cases"),
     path.join(process.cwd(), "cases"),
+    path.join(process.cwd(), "..", "cases"),
   ];
 
   for (const dir of candidates) {
